@@ -4,21 +4,21 @@ const chai = require("chai");
 const chaiHttp = require("chai-http");
 const mongoose = require("mongoose");
 
-const {app} = require('../server');
-const {TEST_DATABASE_URL, PORT} = require('../config');
-
 const expect = chai.expect;
+
+const {app, runServer, closeServer} = require('../server.js');
+const {TEST_DATABASE_URL} = require('../config.js');
 
 chai.use(chaiHttp);
 
 describe("basic test function", function(){
 
 	before(function(){
-		mongoose.connect(TEST_DATABASE_URL, PORT);
+		return runServer(TEST_DATABASE_URL);
 	});
 
 	after(function(){
-		mongoose.disconnect(TEST_DATABASE_URL, PORT);
+		return closeServer();
 	});
 
 	it('should give me a 200 status at the URL', function(){
