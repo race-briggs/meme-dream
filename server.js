@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 
-const {DATABASE_URL, PORT} = require('/config');
+const {DATABASE_URL, PORT} = require('./config');
 
 
 const app = express();
@@ -44,12 +44,16 @@ function closeServer() {
 			console.log('Closing server');
 			server.close(err => {
 				if(err) {
-					return  reject(err);
+					return reject(err);
 				}
 				resolve();
 			});
 		});
 	});
 };
+
+if(require.main === module) {
+	runServer(DATABASE_URL).catch(err => console.error(err));
+}
 
 module.exports = {app, runServer, closeServer};
