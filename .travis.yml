@@ -4,6 +4,7 @@ services:
 - mongodb
 deploy:
   provider: heroku
+  edge: true
   api_key:
     secure: JN4b3MGS4fR9yf03+/vlueBASicx83XdRQp2DV6c3q2oI/m/2F+8HsYtJ0bEzKUrLPFZswNQEENWA5lY7JWBRYfAfI9PW3hTDMWcq9CapUpKhG3B+uVZhHCyHeMpYsF+XA2ORr/Pi6o6jzFdTsFC1Pg+OE2IKWXHiByKI879MtlBLUqsuElqPNOHB/foJbjpMmHxMC11WwA7iftT52LxG+yTw3BX8CSn7IiScYtPqCmJXhqyZ7at/9ilgMzdJ4O4vhw4EVLkpboSkC7MsIu+WcvNVlf60ZVnJ/emI93g48L53nW16GkWJZC1/ktUjgj3Di46U6IBd1AqRuaXV8wyVpeICRerysgl2WY+nAD6G24DqwEJybZ5/O7TsivkILMmWa5LvFq6uIOfefqFKYAUBDNT+1gbD+D5q9qKurCP2wRhlIhqX+bIKV08XlEOLngfhHyxlLtv7HaNwwjNxlgd4P2JlwfVr8wlK4Zwdes7aJ/dzsz1EV/yDxHquya/ZbSoHSROqmOjTQwvJDYif1wqgsbpYgCWzVAY7J8BDsboDUctxxRJkb9vds/8y3hLggY0dUyZRufr7zcH4iE7J+GDlRPIOB7tQXhrrXZCDQZNb0JMol+HhYAnoHnWMOO1VXiwtD2e/NkQofsSs8z6htgmRqArjOwi6NnSy+jL/cd33/0=
   app: https://sheltered-fortress-34693.herokuapp.com/
