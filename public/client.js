@@ -1,7 +1,7 @@
 'use strict';
 
 let MOCK_API_DATA = {
-	"memes": [
+	"memeList": [
 		{
 			"name": 'Kappa',
 			"type": 'emoticon',
@@ -35,15 +35,14 @@ let MOCK_API_DATA = {
 	]	
 };
 
-function getMemes(func){
-	setTimeout(function(){func(MOCK_API_DATA)}, 1);
+function getMemes(callbackFn){
+	setTimeout(function(){callbackFn(MOCK_API_DATA)}, 1);
 };
 
 function displayMemes(data){
-	for(index in data.memes){
+	for(index in data.memeList){
 		$('body').append(
-			`<p>${data.memes[index].name}</p>`
-			);
+			'<p>' + data.memeList[index].name '</p>');
 	};
 };
 
