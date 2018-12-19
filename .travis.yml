@@ -6,7 +6,7 @@ deploy:
   provider: heroku
   edge: true
   api_key:
-    secure: 9335e9a1-f68f-4624-a42b-bd810e966854
+    secure: 21f42f6c-ec4f-4755-9c3d-f90111aedc20
   app: sheltered-fortress-34693
   on:
     repo: race-briggs/meme-dream
