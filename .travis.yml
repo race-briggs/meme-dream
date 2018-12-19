@@ -6,7 +6,7 @@ deploy:
   provider: heroku
   edge: true
   api_key:
-    secure: gu/we5gwhIgaJMgNll4YpdSTNktWAtpnna2cVf6BkXVVxa4cfnCqr6Y/l8dJrqBEcU4yeLdkPIxZ8MAnP6pxxk/N/6Gc3fsSUSgJ1JyudSsIU6RJFqpmEMa2rDDGRs522WfGtugI6vlcKmY0coQ5gw/DxFS2STtYkaCgpx/3GEtdKyJyLVrk/ELH0WY7//JuHHh6FMcnLB254SM8/yAgW8a6p6LZwpY4kZTKG7ge0EKn4nNSI+QoIeyvnEM3u7yORYM7H6MBYfu7KRReoG2ERtHhufMPvZPHT6iQeAuffr0gV0+7JOPW3rR9dGP3JkVR/JB6MKhu1usxeLoWbJKnsVUtJTN2xJCG6+rNhYq3JyBXamGdkkfCJt9J9uXXszJoxs+RIqd3vTdt7Sti3rU/81JamFFuS5OVxdbsAjEii/RbaLarZvbSx4NvKO/cDc9pUuKvn+JHc/ZVJc/KaRLOJA4dq76nihgiu5SRaeG8LbyXfUx0wx2kPeqzgJS1I2fP+lNsDd28S8qxrFm6PD0oQIkJ+Xyh/nNxe9zVfyR+rSy85LDLbxW7u5/iJ2Q3PGCHoRfYS7jc4Xo850pnUIM6eR9vYqEzaft8PX56JCsnB/BDopv0hgnG+xiYZkQg7dRCCmaLBIPzJm4pDdZDhoxIS4jLgxk42LRBAkfdtw1P9mA=
+    secure: 9335e9a1-f68f-4624-a42b-bd810e966854
   app: sheltered-fortress-34693
   on:
     repo: race-briggs/meme-dream
