@@ -23,7 +23,7 @@ describe("basic test function", function(){
 
 	it('should give me a 200 status at the URL', function(){
 		return chai.request(app)
-			.get('/')
+			.get('/memes')
 			.then(res => {
 				expect(res).to.have.status(200);
 			});
