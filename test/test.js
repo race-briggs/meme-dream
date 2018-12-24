@@ -83,7 +83,7 @@ describe("meme-db app", function(){
 					});
 					resMeme = res.body[0];
 					console.log(resMeme);
-					return MemeEntry.findById(resMeme.id);
+					return MemeEntry.findById(resMeme._id);
 				})
 				.then(memeEnt => {
 					expect(resMeme.id).to.equal(memeEnt.id);
