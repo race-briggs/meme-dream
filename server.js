@@ -63,7 +63,7 @@ app.post('/memes', (req, res) => {
 });
 
 app.put('/memes/:id', (res, req) => {
-	if(!(req.params.id && req.body.id && === req.body.id)){
+	if(!(req.params.id && req.body.id === req.body.id)){
 		res.status(400).json({message: 'Request path id and request body id must be the same'});
 	};
 
