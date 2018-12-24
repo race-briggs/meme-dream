@@ -77,13 +77,13 @@ describe("meme-db app", function(){
 					expect(res).to.have.status(200);
 					expect(res).to.be.json;
 					expect(res.body).to.be.a('array');
-
 					res.body.forEach(function(memeEnt){
 						expect(memeEnt).to.be.a('object');
 						expect(memeEnt).to.include.keys('name', 'type', 'origin');
 					});
 					resMeme = res.body[0];
-					return MemeEntry.findById(resMeme.id)
+					console.log(resMeme);
+					return MemeEntry.findById(resMeme.id);
 				})
 				.then(memeEnt => {
 					expect(resMeme.id).to.equal(memeEnt.id);
