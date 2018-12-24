@@ -86,7 +86,8 @@ describe("meme-db app", function(){
 					return MemeEntry.findById(resMeme._id);
 				})
 				.then(memeEnt => {
-					expect(resMeme.id).to.equal(memeEnt.id);
+					console.log(memeEnt);
+					expect(resMeme._id.toString()).to.equal(memeEnt._id.toString());
 					expect(resMeme.name).to.equal(memeEnt.name);
 					expect(resMeme.type).to.equal(memeEnt.type);
 					expect(resMeme.origin).to.equal(memeEnt.origin);
