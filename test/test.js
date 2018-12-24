@@ -3,12 +3,13 @@
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const mongoose = require("mongoose");
+const faker = require("faker");
 
 const expect = chai.expect;
 
 const {app, runServer, closeServer} = require('../server.js');
 const {MemeEntry} = require('../models.js');
-//const {TEST_DATABASE_URL} = require('../config.js');
+const {TEST_DATABASE_URL} = require('../config.js');
 
 chai.use(chaiHttp);
 
@@ -23,7 +24,7 @@ function seedMemeData(){
 
 function generateMemeData(){
 	return {
-		name: faker.name(),
+		name: faker.name.firstName(),
 		type: faker.lorem.word(),
 		origin: faker.lorem.word()
 	};
@@ -37,7 +38,7 @@ function tearDown(){
 describe("basic test function", function(){
 
 	before(function(){
-		return runServer('http://localhost/meme-dream');
+		return runServer(TEST_DATABASE_URL);
 	});
 
 	beforeEach(function(){
