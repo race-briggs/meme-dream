@@ -56,19 +56,41 @@ describe("meme-db app", function(){
 	describe('GET request', function(){
 		it('should return all existing memes', function(){
 			let res;
-		return chai.request(app)
-			.get('/memes')
-			.then(_res => {
-				res = _res;
-				expect(res).to.have.status(200);
-				expect(res).to.be.json;
-				expect(res.body).to.have.lengthOf.at.least(1);
-				return MemeEntry.count();
-			})
-			.then(function(count){
-				expect(res.body).to.have.lengthOf(count);
-			});
+			return chai.request(app)
+				.get('/memes')
+				.then(_res => {
+					res = _res;
+					expect(res).to.have.status(200);
+					expect(res).to.be.json;
+					expect(res.body).to.have.lengthOf.at.least(1);
+					return MemeEntry.count();
+				})
+				.then(function(count){
+					expect(res.body).to.have.lengthOf(count);
+				});
 		});
-		
+		it('should return a meme with correct fields', function(){
+			let resMeme;
+			return chai.request(app)
+				.get('/memes')
+				.then(res => {
+					expect(res).to.have.status(200);
+					expect(res).to.be.json;
+					expect(res.body).to.be.a('array');
+
+					res.body.forEach(function(memeEnt){
+						expect(memeEnt).to.be.a('object');
+						expect(memeEnt).to.include.keys('name', 'type', 'origin');
+					});
+					resMeme = res.body[0];
+					return MemeEntry.findById(resMeme.id)
+				})
+				.then(memeEnt => {
+					expect(resMeme.id).to.equal(memeEnt.id);
+					expect(resMeme.name).to.equal(memeEnt.name);
+					expect(resMeme.type).to.equal(memeEnt.type);
+					expect(resMeme.origin).to.equal(memeEnt.origin);
+				});
+		});
 	});
 });
