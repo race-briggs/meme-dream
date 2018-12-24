@@ -10,6 +10,6 @@ const memeEntrySchema = mongoose.Schema({
 	origin: {type: String}
 });
 
-const MemeEntry = {'Meme', memeEntrySchema};
+const MemeEntry = mongoose.model('Meme', memeEntrySchema);
 
 module.exports = {MemeEntry};
