@@ -35,7 +35,7 @@ function tearDown(){
 	return mongoose.connection.dropDatabase();
 }
 
-describe("basic test function", function(){
+describe("meme-db app", function(){
 
 	before(function(){
 		return runServer(TEST_DATABASE_URL);
@@ -53,13 +53,22 @@ describe("basic test function", function(){
 		return tearDown();
 	})
 
-	it('should give me a 200 status at the URL', function(){
-		let res;
+	describe('GET request', function(){
+		it('should return all existing memes', function(){
+			let res;
 		return chai.request(app)
 			.get('/memes')
 			.then(_res => {
 				res = _res;
 				expect(res).to.have.status(200);
+				expect(res).to.be.json;
+				expect(res.body).to.have.lengthOf.at.least(1);
+				return MemeEntry.count();
+			})
+			.then(function(count){
+				expect(res.body).to.have.lengthOf(count);
 			});
+		});
+		
 	});
 });
