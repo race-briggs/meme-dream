@@ -128,6 +128,34 @@ describe("meme-db app", function(){
 	});
 
 	describe('PUT request', function(){
+		it('should update requested fields', function(){
+			let updateData = {
+				name: 'Krappa',
+				type: 'emoticon'
+			};
 
-	})
+			return MemeEntry
+				.findOne()
+				.then(function(meme){
+					console.log(meme)
+					updateData._id = meme._id;
+					console.log(updateData);
+					return chai.request(app)
+						.put(`/memes/${meme._id}`)
+						.send(updateData)
+				})
+				.then(function(res){
+					expect(res).to.have.status(204);
+
+					return MemeEntry
+						.findById(updateData._id);
+				})
+				.then(function(meme) {
+					expect(meme.name).to.equal(updateData.name);
+					expect(meme.type).to.equal(updateData.type);
+				});
+		});
+	});
+
+
 });

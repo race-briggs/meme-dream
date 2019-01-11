@@ -12,9 +12,10 @@ const {MemeEntry} = require('./models');
 
 const app = express();
 
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.use(morgan('common'));
 app.use(express.static('public'));
-app.use(bodyParser.json());
 
 app.get('/memes', (req, res) => {
 	MemeEntry.find()
@@ -61,8 +62,8 @@ app.post('/memes', (req, res) => {
 		});
 });
 
-app.put('/memes/:id', (res, req) => {
-	if(!(req.params.id && req.body.id === req.body.id)){
+app.put('/memes/:id', (req, res) => {
+	if(!(req.params.id && req.body._id === req.body._id)){
 		res.status(400).json({message: 'Request path id and request body id must be the same'});
 	};
 
@@ -75,8 +76,11 @@ app.put('/memes/:id', (res, req) => {
 		}
 	});
 
+	console.log(updated);
+
 	MemeEntry.findByIdAndUpdate(req.params.id, {$set: updated}, {new: true})
 		.then(updatedMeme => {
+			console.log(updatedMeme);
 			res.status(204).end();
 		})
 		.catch(err => {
