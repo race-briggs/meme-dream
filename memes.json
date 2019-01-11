@@ -1,0 +1,5 @@
+{"_id":{"$oid":"5c1ed5e2bbdaf4910e824337"},"name":"Kappa","type":"emoticon","collection":"twitch","origin":"Twitch"}
+{"_id":{"$oid":"5c1ed5e2bbdaf4910e824338"},"name":"Navy Seal","type":"copypasta","collection":"text","origin":"4chan"}
+{"_id":{"$oid":"5c1ed5e2bbdaf4910e824339"},"name":"Moth Memes","type":"picture","collection":"picture","origin":"unknown"}
+{"_id":{"$oid":"5c1ed5e2bbdaf4910e82433a"},"name":"Used Car Salesman","type":"picture","collection":"picture","origin":"Reddit"}
+{"_id":{"$oid":"5c1ed5e2bbdaf4910e82433b"},"name":"Hell in a Cell","type":"text bait","collection":"text","origin":"Reddit"}

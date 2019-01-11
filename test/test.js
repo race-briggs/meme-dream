@@ -4,6 +4,7 @@ const chai = require("chai");
 const chaiHttp = require("chai-http");
 const mongoose = require("mongoose");
 const faker = require("faker");
+const bodyParser = require("body-parser");
 
 const expect = chai.expect;
 
@@ -45,13 +46,13 @@ describe("meme-db app", function(){
 		return seedMemeData();
 	});
 
+	afterEach(function(){
+			return tearDown();
+		})
+
 	after(function(){
 		return closeServer();
 	});
-
-	afterEach(function(){
-		return tearDown();
-	})
 
 	describe('GET request', function(){
 		it('should return all existing memes', function(){
@@ -93,5 +94,40 @@ describe("meme-db app", function(){
 					expect(resMeme.origin).to.equal(memeEnt.origin);
 				});
 		});
+
 	});
+
+	describe('POST request', function(){
+
+		it('should post a meme to the db', function(){
+
+			let newMeme = generateMemeData();
+
+			console.log(newMeme);
+
+			return chai.request(app)
+				.post('/memes')
+				.send(newMeme)
+				.then(function(res){
+					expect(res).to.have.status(201);
+					expect(res).to.be.json;
+					expect(res.body).to.be.a('object');
+					expect(res.body).to.include.keys('name', 'type', 'origin');
+					expect(res.body.name).to.equal(newMeme.name);
+					expect(res.body.id).to.not.be.null;
+					newMeme._id = res.body._id;
+					return MemeEntry.findById(res.body._id);
+				})
+				.then(memeEnt => {
+					expect(newMeme._id.toString()).to.equal(memeEnt._id.toString());
+					expect(newMeme.name).to.equal(memeEnt.name);
+					expect(newMeme.type).to.equal(memeEnt.type);
+					expect(newMeme.origin).to.equal(memeEnt.origin);
+				});
+		});
+	});
+
+	describe('PUT request', function(){
+
+	})
 });

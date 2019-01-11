@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 mongoose.Promise = global.Promise;
 
 
@@ -13,6 +14,7 @@ const app = express();
 
 app.use(morgan('common'));
 app.use(express.static('public'));
+app.use(bodyParser.json());
 
 app.get('/memes', (req, res) => {
 	MemeEntry.find()
@@ -52,9 +54,7 @@ app.post('/memes', (req, res) => {
 		type: req.body.type,
 		origin: req.body.origin
 	})
-		.then(meme => {
-			res.status(201).json(meme)
-		})
+		.then(meme => res.status(201).json(meme))
 		.catch(err => {
 			console.error(err);
 			return res.status(500).json({error: 'Internal server error'});
