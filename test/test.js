@@ -157,5 +157,26 @@ describe("meme-db app", function(){
 		});
 	});
 
+	describe('DELETE request', function(){
+
+		it('should delete an entry by id', function(){
+			let targetMeme;
+
+			return MemeEntry
+				.findOne()
+				.then(function(res){
+					targetMeme = res;
+					console.log(targetMeme);
+					return chai.request(app).delete(`/memes/${targetMeme._id}`);
+				})
+				.then(function(res){
+					expect(res).to.have.status(204);
+					return MemeEntry.findById(targetMeme._id);
+				})
+				.then(function(finalRes){
+					expect(finalRes).to.be.null;
+				});
+		});
+	});
 
 });

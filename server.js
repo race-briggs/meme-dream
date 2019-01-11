@@ -88,7 +88,7 @@ app.put('/memes/:id', (req, res) => {
 		});
 });
 
-app.delete('/memes/:id/', (res, req) => {
+app.delete('/memes/:id/', (req, res) => {
 	MemeEntry.findByIdAndRemove(req.params.id)
 		.then(() => {
 			res.status(204).json({message: 'Item successfully deleted'})
