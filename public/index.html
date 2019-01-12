@@ -1,12 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title>MemeDream</title>
-	<style type="text/css" src="styles.css"></style>
-	
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 </head>
 <body>
-<p>Hello World!</p>
+<header role="banner">
+	<h1>MemeDream</h1>
+	<h2>A place to find and submit memes</h2>
+</header>
+<main role="main">
+	<section role="region" class="get-div">
+		<button class="get-btn">Click for some memeage</button>
+	</section>
+	<section role="section" class="search-div">
+		<p>SEARCH FOR A MEME</p>
+		<form class="search-form" method="get">
+			<label class="meme-search" for="meme-search"> Search for a meme by ID:
+			<input class="search-txt" type="text" name="meme-search" placeholder="Enter a meme ID" required="true"></label>
+			<input class="search-btn" type="submit" name="search-btn" value="Search">
+		</form>
+	</section>
+	<section role="section" class="submit-div">
+		<p>SUBMIT A MEME</p>
+		<form class="submit-form" method="post">
+			<label class="submit-label">Meme name:<input type="text" name="meme-name" class="meme-name" placeholder="Name"></label>
+			<label class="submit-label">Meme type:<input type="text" name="meme-type" class="meme-type" placeholder="Type"></label>
+			<label class="submit-label">Meme origin:<input type="text" name="meme-origin" class="meme-origin"placeholder="Origin"></label>
+			<input class="submit-btn" type="submit" name="submit-btn" value="Submit">
+		</form>
+	</section>
+	<section role="region" class="results">
+		
+	</section>
+</main>
 </body>
 <script type="text/javascript" src="client.js"></script>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>

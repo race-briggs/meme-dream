@@ -1,0 +1,78 @@
+* {
+	box-sizing: border-box;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+	background-color: #21AAFF;
+}
+
+header {
+
+}
+
+p, h1, h2 {
+	text-align: center;
+}
+
+form {
+	width: 60%;
+	margin: 2% auto 2% auto;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	text-align: center;
+	background-color: #EBEDEF;
+	border: 3px solid grey;
+	border-radius: 4px;
+}
+
+section {
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+.get-div {
+	text-align: center;
+	margin: auto;
+	height: 50px;
+}
+
+.get-btn {
+	margin: auto;
+	font-weight: bold;
+	width: 30%;
+	height: 100%;
+	background-color: #BABBBC;
+	border: 2px solid black;
+	border-radius: 2px;
+}
+
+.get-btn:active {
+	background-color: white;
+}
+
+.submit-form > label {
+	display: block;
+	margin: 1% auto 1% auto;
+	width: 80%;
+	text-align: left;
+}
+
+.search-txt, .meme-name, .meme-type, .meme-origin {
+	margin-left: 3%;
+}
+
+.submit-label > input {
+	float: right;
+}
+
+.search-btn, .submit-btn {
+	text-align: center;
+	display: block;
+	margin-top: 3%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: auto;
+	border: 0.5px solid black;
+	border-radius: 2px;
+}
