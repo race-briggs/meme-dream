@@ -3,6 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 mongoose.Promise = global.Promise;
 
 
@@ -12,6 +13,7 @@ const {MemeEntry} = require('./models');
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(morgan('common'));

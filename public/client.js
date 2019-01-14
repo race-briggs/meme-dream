@@ -35,7 +35,7 @@
 //	]	
 //};
 
-const searchUrl = "https://sheltered-fortress-34693.herokuapp.com/memes"
+const url = "https://sheltered-fortress-34693.herokuapp.com/memes"
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
@@ -43,23 +43,26 @@ function formatQueryParams(params) {
   return queryItems.join('&');
 }
 
-function getMemes(query){
-	setTimeout(function(){callbackFn(MOCK_API_DATA)}, 1);
+function getMemes(callbackFn){
+	let myHeaders = new Headers({
+		'Access-Control-Allow-Origin': '*'
+	})
 
-	const params = {
-
-	};
-
-	url = searchUrl + '?' query;
-
-	fetch(url)
+	fetch(url, {
+		method: 'GET',
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+			'Content-Type': 'application/json'
+	}})
 		.then(response => {
 			if(response.ok) {
 				return response.json();
 			}
 			throw new Error(respnose.statusText);
 		})
-		.then(responseJson => displayMemes(responseJson))
+		.then(responseJson => {
+				setTimeout(function(){displayMemes(responseJson)}, 1)
+		})
 		.catch(err => {
 			console.error(err);
 		});
@@ -67,16 +70,20 @@ function getMemes(query){
 }
 
 function displayMemes(data){
-	for(index in data.memeList){
-		$('body').append(
-			'<p>' + data.memeList[index].name '</p>');
-	};
-};
+	console.log(data);
 
-function getAndDisplayMemes() {
-	getMemes(displayMemes);
-};
+	//for(index in data.memeList){
+	//	$('.results-list').append(
+	//		`<li>${}</li>`);
+	//};
+}
 
-$(function(){
-	getAndDisplayMemes();
-})
+function watchGet(){
+	$('.get-btn').click(function(event) {
+		console.log('click successful');
+		event.preventDefault();
+		getMemes(displayMemes);
+	});
+}
+
+$(watchGet);
