@@ -71,11 +71,17 @@ function getMemes(callbackFn){
 
 function displayMemes(data){
 	console.log(data);
-
-	//for(index in data.memeList){
-	//	$('.results-list').append(
-	//		`<li>${}</li>`);
-	//};
+	$('.results-list').empty();
+	for(let i = 0; i < data.length; i++){
+		console.log(data[i].name, data[i].origin, data[i].type);
+		$('.results-list').append(
+			`<li>
+			<h3>${data[i].name}</h3>
+			<p>Origin: ${data[i].origin}</p>
+			<p>Type: ${data[i].type}</p>
+			</li>`);
+	}
+	$('.results').removeClass('hidden');
 }
 
 function watchGet(){
