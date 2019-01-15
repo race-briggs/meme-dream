@@ -103,17 +103,11 @@ function deleteMeme(id){
 		'Access-Control-Allow-Origin': '*',
 		'Content-Type': 'application/json'
 	}})
-	.then(response => {
-		if(response.ok) {
-			return response.json();
-		}
-		throw new Error(respnose.statusText);
-	})
 	.then(responseJson => {
 		console.log(responseJson)
 		$('.results-list').empty();
 		$('.results-list').append(
-			`<h3>${responseJson.message} at ID: ${id}</h3>
+			`<li><h3>${responseJson.message} at ID: ${id}</h3></li>
 			`)
 	})
 	.catch(err => {
@@ -166,7 +160,12 @@ function watchSearch(){
 }
 
 function watchDelete(){
-
+	$('.delete-form').submit(function(event){
+		event.preventDefault();
+		let memeId = $('.delete-txt').val();
+		deleteMeme(memeId);
+		$('.delete-txt').val('');
+	});
 }
 
 function eventHandler(){
