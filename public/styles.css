@@ -4,7 +4,7 @@
 }
 
 body {
-	background-color: #21AAFF;
+	background: radial-gradient(circle at 100%, #21AAFF, #888888);
 }
 
 header {
@@ -31,8 +31,9 @@ section {
 	margin-bottom: 2%;
 }
 
-li > p {
-	text-align: left;
+li {
+	margin-top: 6%;
+	margin-bottom: 6%;
 }
 
 .get-div {
@@ -79,6 +80,16 @@ li > p {
 	padding: auto;
 	border: 0.5px solid black;
 	border-radius: 2px;
+}
+
+.results {
+	margin: 2% auto;
+}
+
+.results-list {
+	list-style: none;
+	text-align: center;
+	padding-inline-start: 0;
 }
 
 .hidden {
