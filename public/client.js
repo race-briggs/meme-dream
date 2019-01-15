@@ -136,11 +136,12 @@ function submitMeme(memeName, memeOrigin, memeType){
 		$('.results-list').empty();
 		$('.results-list').append(
 			`<li>
-			<h3>${response.name}</h3>
-			<p>Origin: ${response.origin}</p>
-			<p>Type: ${response.type}</p>
-			<p>ID: ${response._id}</p>
-			</li>`)
+			<h3>${response.body.name}</h3>
+			<p>Origin: ${response.body.origin}</p>
+			<p>Type: ${response.body.type}</p>
+			<p>ID: ${response.body_id}</p>
+			</li>`);
+		$('.results').removeClass('hidden');
 	})
 	.catch(err => {
 		console.error(err);
