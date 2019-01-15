@@ -15,6 +15,10 @@ p, h1, h2 {
 	text-align: center;
 }
 
+span {
+
+}
+
 form {
 	width: 60%;
 	margin: 2% auto 2% auto;
@@ -27,13 +31,18 @@ form {
 }
 
 section {
-	margin-top: 2%;
-	margin-bottom: 2%;
+	text-align: center;
+	margin: 2% auto;
 }
 
 li {
 	margin-top: 6%;
 	margin-bottom: 6%;
+}
+
+.delete-form, .search-form {
+	display: inline-block;
+	width: 45%;
 }
 
 .get-div {
@@ -52,8 +61,20 @@ li {
 	border-radius: 2px;
 }
 
+.search-btn:active {
+	background-color: #2CBD4A;
+}
+
+.submit-btn:active {
+	background-color: #273FDD;
+}
+
 .get-btn:active {
 	background-color: white;
+}
+
+.delete-btn:active {
+	background-color: #F92F2F;
 }
 
 .submit-form > label {
@@ -63,7 +84,7 @@ li {
 	text-align: left;
 }
 
-.search-txt, .meme-name, .meme-type, .meme-origin {
+.search-txt, .delete-txt, .meme-name, .meme-type, .meme-origin {
 	margin-left: 3%;
 }
 
@@ -71,7 +92,7 @@ li {
 	float: right;
 }
 
-.search-btn, .submit-btn {
+.search-btn, .submit-btn, .delete-btn {
 	text-align: center;
 	display: block;
 	margin-top: 3%;

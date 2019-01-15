@@ -94,6 +94,33 @@ function getById(id, callbackFn){
 		});
 }
 
+function deleteMeme(id){
+	let urlWithId = url + '/' + id;
+
+	fetch(urlWithId, {
+	method: 'DELETE',
+	headers: {
+		'Access-Control-Allow-Origin': '*',
+		'Content-Type': 'application/json'
+	}})
+	.then(response => {
+		if(response.ok) {
+			return response.json();
+		}
+		throw new Error(respnose.statusText);
+	})
+	.then(responseJson => {
+		console.log(responseJson)
+		$('.results-list').empty();
+		$('.results-list').append(
+			`<h3>${responseJson.message} at ID: ${id}</h3>
+			`)
+	})
+	.catch(err => {
+		console.error(err);
+	});
+}
+
 function displayMemes(data){
 	console.log(callerFunction);
 	$('.results-list').empty();
@@ -134,13 +161,18 @@ function watchSearch(){
 		console.log('search initiated');
 		let memeId = $('.search-txt').val();
 		getById(memeId, displayMemes);
+		$('.search-txt').val('');
 	});
-	$('.search-txt').val('');
+}
+
+function watchDelete(){
+
 }
 
 function eventHandler(){
 	watchGet();
 	watchSearch();
+	watchDelete();
 }
 
 $(eventHandler);
