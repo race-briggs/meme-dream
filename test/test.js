@@ -109,6 +109,7 @@ describe("meme-db app", function(){
 				.post('/memes')
 				.send(newMeme)
 				.then(function(res){
+					console.log(res);
 					expect(res).to.have.status(201);
 					expect(res).to.be.json;
 					expect(res.body).to.be.a('object');
