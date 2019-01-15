@@ -57,7 +57,10 @@ app.post('/memes', (req, res) => {
 		type: req.body.type,
 		origin: req.body.origin
 	})
-		.then(meme => res.status(201).json(meme))
+		.then(meme => {
+			console.log(meme);
+			return res.status(201).json(meme)
+		})
 		.catch(err => {
 			console.error(err);
 			return res.status(500).json({error: 'Internal server error'});

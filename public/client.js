@@ -115,6 +115,38 @@ function deleteMeme(id){
 	});
 }
 
+function submitMeme(memeName, memeOrigin, memeType){
+
+	let memeData = {
+		name: memeName,
+		origin: memeOrigin,
+		type: memeType
+	};
+
+	fetch(url, {
+		method: 'POST',
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(memeData)
+	})
+	.then(response => {
+		console.log(response);
+		$('.results-list').empty();
+		$('.results-list').append(
+			`<li>
+			<h3>${response.name}</h3>
+			<p>Origin: ${response.origin}</p>
+			<p>Type: ${response.type}</p>
+			<p>ID: ${response._id}</p>
+			</li>`)
+	})
+	.catch(err => {
+		console.error(err);
+	});
+}
+
 function displayMemes(data){
 	console.log(callerFunction);
 	$('.results-list').empty();
@@ -168,10 +200,24 @@ function watchDelete(){
 	});
 }
 
+function watchSubmission(){
+	$('.submit-form').submit(function(event){
+		event.preventDefault();
+		let memeName = $('.meme-name').val();
+		let memeOrigin = $('.meme-origin').val();
+		let memeType = $('.meme-type').val();
+		submitMeme(memeName, memeOrigin, memeType);
+		$('.meme-name').val('');
+		$('.meme-type').val('');
+		$('.meme-origin').val('');
+	});
+}
+
 function eventHandler(){
 	watchGet();
 	watchSearch();
 	watchDelete();
+	watchSubmission();
 }
 
 $(eventHandler);
