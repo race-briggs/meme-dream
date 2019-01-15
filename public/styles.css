@@ -40,7 +40,7 @@ li {
 	margin-bottom: 6%;
 }
 
-.delete-form, .search-form {
+.delete-form, .search-form, .update-form, .submit-form {
 	display: inline-block;
 	width: 45%;
 }
@@ -77,7 +77,7 @@ li {
 	background-color: #F92F2F;
 }
 
-.submit-form > label {
+.submit-form > label, .update-form > label {
 	display: block;
 	margin: 1% auto 1% auto;
 	width: 80%;

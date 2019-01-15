@@ -147,6 +147,32 @@ function submitMeme(memeName, memeOrigin, memeType){
 	});
 }
 
+function updateMeme(id, newName, newType, newOrigin){
+	let newData = {
+		name: newName,
+		type: newType,
+		origin: newOrigin
+	};
+
+	let fullUrl = url + '/' + id;
+
+	fetch(fullUrl, {
+		method: 'PUT',
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(newData)
+	})
+	.then(response => {
+		console.log('meme updated');
+		getById(id);
+	})
+	.catch(err => {
+		console.error(err);
+	});
+}
+
 function displayMemes(data){
 	console.log(callerFunction);
 	$('.results-list').empty();
@@ -213,11 +239,27 @@ function watchSubmission(){
 	});
 }
 
+function watchUpdate(){
+	$('.update-form').submit(function(event){
+		event.preventDefault();
+		let updateId = $('.update-id').val();
+		let newName = $('.new-meme-name').val();
+		let newOrigin = $('.new-meme-origin').val();
+		let newType = $('.new-meme-type').val();
+		updateMeme(updateId, newName, newOrigin, newType);
+		$('.update-id').val('');
+		$('.new-meme-name').val('');
+		$('.new-meme-type').val('');
+		$('.new-meme-origin').val('');
+	})
+}
+
 function eventHandler(){
 	watchGet();
 	watchSearch();
 	watchDelete();
 	watchSubmission();
+	watchUpdate();
 }
 
 $(eventHandler);
