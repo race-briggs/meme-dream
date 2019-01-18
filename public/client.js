@@ -131,14 +131,17 @@ function submitMeme(memeName, memeOrigin, memeType){
 		},
 		body: JSON.stringify(memeData)
 	})
-	.then(response => {
+	.then(response => response.json())
+	.then(responseJson => {
 		console.log('Submission successful');
+		console.log(responseJson);
 		$('.results-list').empty();
 		$('.results-list').append(
 			`<li>
-			<h3>${memeData.name}</h3>
-			<p>Origin: ${memeData.origin}</p>
-			<p>Type: ${memeData.type}</p>
+			<h3>${responseJson.name}</h3>
+			<p>Origin: ${responseJson.origin}</p>
+			<p>Type: ${responseJson.type}</p>
+			<p>ID: ${responseJson._id}</p>
 			</li>`);
 		$('.results').removeClass('hidden');
 	})

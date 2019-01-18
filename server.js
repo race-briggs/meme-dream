@@ -52,14 +52,14 @@ app.post('/memes', (req, res) => {
 		}
 	}
 
-	MemeEntry.create({
+	return MemeEntry.create({
 		name: req.body.name,
 		type: req.body.type,
 		origin: req.body.origin
 	})
 		.then(meme => {
 			console.log(meme);
-			return res.status(201).json(meme)
+			return res.status(201).json(meme);
 		})
 		.catch(err => {
 			console.error(err);
