@@ -1,40 +1,5 @@
 'use strict';
 
-//let MOCK_API_DATA = {
-//	"memeList": [
-//		{
-//			"name": "Kappa",
-//			"type": "emoticon",
-//			"collection": "twitch",
-//			"origin": "Twitch"
-//		},
-//		{
-//			"name": "Navy Seal",
-//			"type": "copypasta",
-//			"collection": "text",
-//			"origin": "4chan"
-//		},
-//		{
-//			"name": "Moth Memes",
-//			"type": "picture",
-//			"collection": "picture",
-//			"origin": "unknown"
-//		},
-//		{
-//			"name": "Used Car Salesman",
-//			"type": "picture",
-//			"collection": "picture",
-//			"origin": "Reddit"
-//		},
-//		{
-//			"name": "Hell in a Cell",
-//			"type": "text bait",
-//			"collection": "text",
-//			"origin": "Reddit"
-//		}
-//	]	
-//};
-
 const url = "https://sheltered-fortress-34693.herokuapp.com/memes"
 
 let callerFunction;
@@ -103,12 +68,19 @@ function deleteMeme(id){
 		'Access-Control-Allow-Origin': '*',
 		'Content-Type': 'application/json'
 	}})
+	.then(response => {
+		console.log(response);
+		return response.json();
+	})
 	.then(responseJson => {
 		console.log(responseJson)
 		$('.results-list').empty();
 		$('.results-list').append(
-			`<li><h3>${responseJson.message} at ID: ${id}</h3></li>
-			`)
+			`<li><h3>${responseJson.message} at ID: ${responseJson._id}</h3></li>
+			`);
+		$('.results-list').removeClass('hidden');
+		$('.reset-div').removeClass('hidden');
+		$('.forms-div').addClass('hidden');
 	})
 	.catch(err => {
 		console.error(err);
@@ -143,7 +115,9 @@ function submitMeme(memeName, memeOrigin, memeType){
 			<p>Type: ${responseJson.type}</p>
 			<p>ID: ${responseJson._id}</p>
 			</li>`);
+		$('.forms-div').addClass('hidden');
 		$('.results').removeClass('hidden');
+		$('.reset-div').removeClass('hidden');
 	})
 	.catch(err => {
 		console.error(err);
@@ -198,8 +172,9 @@ function displayMemes(data){
 				<p>ID: ${data._id}</p>
 				</li>`);
 		}
-
+	$('.forms-div').addClass('hidden');
 	$('.results').removeClass('hidden');
+	$('.reset-div').removeClass('hidden');
 }
 
 function watchGet(){
