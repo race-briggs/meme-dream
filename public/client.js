@@ -10,6 +10,60 @@ function formatQueryParams(params) {
   return queryItems.join('&');
 }
 
+function showSection(){
+	$('.search-nav').click(function(){
+		$('.reset-div').addClass('hidden');
+		$('.results').addClass('hidden');
+		$('.forms-div').removeClass('hidden').empty().append(`
+			<form class="search-form" method="get">
+				<p class="dual-header">SEARCH FOR A MEME</p>
+				<label class="meme-search" for="meme-search"> Search for a meme by ID:
+				<input class="search-txt" type="text" name="meme-search" placeholder="Enter a meme ID" required="true"></label>
+				<input role="button" class="search-btn" type="submit" name="search-btn" value="Search">
+			</form>`);
+	});
+	$('.submit-nav').click(function(){
+		$('.reset-div').addClass('hidden');
+		$('.results').addClass('hidden');
+		$('.forms-div').removeClass('hidden').empty().append(`
+			<form class="submit-form" method="post">
+				<p>SUBMIT A MEME</p>
+				<label class="submit-label">Meme name:<input type="text" name="meme-name" class="meme-name" placeholder="Name" required="true"></label>
+				<label class="submit-label">Meme type:<input type="text" name="meme-type" class="meme-type" placeholder="Type" required="true"></label>
+				<label class="submit-label">Meme origin:<input type="text" name="meme-origin" class="meme-origin" placeholder="Origin" required="true"></label>
+				<label class="submit-label">Example image:<input type="text" name="meme-origin" class="meme-image" placeholder="Image url"></label>
+				<input role="button" class="submit-btn" type="submit" name="submit-btn" value="Submit">
+			</form>
+			`);
+	});
+	$('.delete-nav').click(function(){
+		$('.reset-div').addClass('hidden');
+		$('.results').addClass('hidden');
+		$('.forms-div').removeClass('hidden').empty().append(`
+			<form class="delete-form" method="delete">
+				<p class="dual-header">DELETE A MEME</p>
+				<label class="meme-delete" for="meme-delete"> Delete a meme by ID:
+				<input class="delete-txt" type="text" name="meme-delete" placeholder="Enter a meme ID" required="true"></label>
+				<input role="button" class="delete-btn" type="submit" name="search-btn" value="Delete">
+			</form>
+			`);
+	});
+	$('.update-nav').click(function(){
+		$('.reset-div').addClass('hidden');
+		$('.results').addClass('hidden');
+		$('.forms-div').removeClass('hidden').empty().append(`
+			<form class="update-form" method="post">
+				<p>UPDATE A MEME</p>
+				<label class="submit-label">Meme ID:<input type="text" name="update-id" class="update-id" placeholder="Enter the Meme ID" required="true"></label>
+				<label class="submit-label">Meme name:<input type="text" name="new-meme-name" class="new-meme-name" placeholder="New name" required="true"></label>
+				<label class="submit-label">Meme type:<input type="text" name="new-meme-type" class="new-meme-type" placeholder="New type" required="true"></label>
+				<label class="submit-label">Meme origin:<input type="text" name="new-meme-origin" class="new-meme-origin" placeholder="New origin"></label>
+				<input role="button" class="update-btn" type="submit" name="submit-btn" value="Submit">
+			</form>
+			`);
+	});
+}
+
 function getMemes(callbackFn){
 	callerFunction = 'getMemes';
 	fetch(url, {
@@ -109,7 +163,7 @@ function submitMeme(memeName, memeOrigin, memeType){
 		console.log(responseJson);
 		$('.results-list').empty();
 		$('.results-list').append(
-			`<li>
+			`<li class="result-li">
 			<h3>${responseJson.name}</h3>
 			<p>Origin: ${responseJson.origin}</p>
 			<p>Type: ${responseJson.type}</p>
@@ -233,6 +287,7 @@ function watchUpdate(){
 }
 
 function eventHandler(){
+	showSection();
 	watchGet();
 	watchSearch();
 	watchDelete();

@@ -12,16 +12,30 @@
   crossorigin="anonymous"></script>
 </head>
 <body>
-<header role="banner">
-	<a href="index.html"><h1>MemeDream</h1></a>
-	<h2>A place to find and submit memes</h2>
-</header>
+	<header role="banner">
+			<nav class="navbar" role="navigation">
+				<ul class="nav-list">
+					<li class="nav-link"><a class="home-nav" href="index.html">Home</a></li>
+					<li class="nav-link"><a class="search-nav" href="#">Search</a></li>
+					<li class="nav-link"><a class="submit-nav" href="#">Submit</a></li>
+					<li class="nav-link"><a class="update-nav" href="#">Update</a></li>
+					<li class="nav-link"><a class="delete-nav" href="#">Delete</a></li>
+				</ul>
+			</nav>
+	</header>
 <main role="main">
+	<div class="title" role="region">
+			<a href="index.html"><h1>MemeDream</h1></a>
+			<h2>A place to find and submit memes</h2>
+	</div>
 	<section role="region" class="forms-div">
 		<section role="region" class="get-div">
 			<button role="button" class="get-btn">Click for some memeage</button>
 		</section>
-		<section role="region" class="search-delete-div">
+		<section>
+			<h3 class="title-options">Or, use the list above to do something else</h3>
+		</section>
+		<!--<section role="region" class="search-delete-div">
 			<form class="search-form" method="get">
 				<p class="dual-header">SEARCH FOR A MEME</p>
 				<label class="meme-search" for="meme-search"> Search for a meme by ID:
@@ -54,7 +68,7 @@
 				<label class="submit-label">Meme origin:<input type="text" name="new-meme-origin" class="new-meme-origin" placeholder="New origin"></label>
 				<input role="button" class="update-btn" type="submit" name="submit-btn" value="Submit">
 			</form>
-		</section>
+		</section>-->
 	</section>
 	<section role="region" class="results hidden">
 		<ul role="list" class="results-list">
