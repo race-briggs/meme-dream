@@ -143,6 +143,14 @@ a {
 	border-radius: 2px;
 }
 
+.get-result {
+	margin-top: 2%;
+}
+
+.get-separator {
+	margin-top: 0.5%;
+}
+
 .result-li {
 	margin-top: 6%;
 	margin-bottom: 6%;

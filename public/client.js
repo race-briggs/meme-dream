@@ -211,11 +211,11 @@ function displayMemes(data){
 			for(let i = 0; i < data.length; i++){
 				console.log(data[i].name, data[i].origin, data[i].type);
 				$('.results-list').append(
-					`<li>
+					`<li class="get-result">
 					<h3>${data[i].name}</h3>
-					<p>Origin: ${data[i].origin}</p>
-					<p>Type: ${data[i].type}</p>
-					<p>ID: ${data[i]._id}</p>
+					<p class="get-separator">Origin: ${data[i].origin}</p>
+					<p class="get-separator">Type: ${data[i].type}</p>
+					<p class="get-separator">ID: ${data[i]._id}</p>
 					</li>`);}
 		} else if(callerFunction === 'getById') {
 			$('.results-list').append(
