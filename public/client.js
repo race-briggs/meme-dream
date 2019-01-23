@@ -103,7 +103,7 @@ function getById(id, callbackFn){
 			if(response.ok) {
 				return response.json();
 			}
-			throw new Error(respnose.statusText);
+			throw new Error(response.statusText);
 		})
 		.then(responseJson => {
 				setTimeout(function(){displayMemes(responseJson)}, 1)
@@ -206,6 +206,7 @@ function updateMeme(id, newName, newType, newOrigin){
 
 function displayMemes(data){
 	console.log(callerFunction);
+	console.log(data);
 	$('.results-list').empty();
 		if(callerFunction === 'getMemes'){
 			for(let i = 0; i < data.length; i++){
@@ -240,7 +241,7 @@ function watchGet(){
 }
 
 function watchSearch(){
-	$('.search-form').submit(function(event){
+	$('.forms-div').on('click', '.search-btn', function(event){
 		event.preventDefault();
 		console.log('search initiated');
 		let memeId = $('.search-txt').val();
@@ -250,7 +251,7 @@ function watchSearch(){
 }
 
 function watchDelete(){
-	$('.delete-form').submit(function(event){
+	$('.forms-div').on('click', '.delete-btn', function(event){
 		event.preventDefault();
 		let memeId = $('.delete-txt').val();
 		deleteMeme(memeId);
@@ -259,7 +260,7 @@ function watchDelete(){
 }
 
 function watchSubmission(){
-	$('.submit-form').submit(function(event){
+	$('.forms-div').on('click', '.submit-btn', function(event){
 		event.preventDefault();
 		let memeName = $('.meme-name').val();
 		let memeOrigin = $('.meme-origin').val();
@@ -272,7 +273,7 @@ function watchSubmission(){
 }
 
 function watchUpdate(){
-	$('.update-form').submit(function(event){
+	$('.forms-div').on('click', '.update-btn', function(event){
 		event.preventDefault();
 		let updateId = $('.update-id').val();
 		let newName = $('.new-meme-name').val();

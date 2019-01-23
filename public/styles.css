@@ -58,6 +58,10 @@ input[type='text'] {
 	padding: 0.2%;
 }
 
+label {
+	margin-top: 3%;
+}
+
 .nav-link {
 	float: left;
 }
@@ -101,6 +105,11 @@ a {
 	border-radius: 2px;
 }
 
+.get-btn:hover, .search-btn:hover, .submit-btn:hover, .delete-btn:hover, .update-btn:hover {
+	background-color: black;
+	color: white;
+}
+
 .search-btn:active {
 	background-color: #2CBD4A;
 }
@@ -110,7 +119,7 @@ a {
 }
 
 .get-btn:active {
-	background-color: white;
+	background-color: green;
 }
 
 .delete-btn:active {
@@ -132,9 +141,11 @@ a {
 	float: right;
 }
 
-.search-btn, .submit-btn, .delete-btn {
+.search-btn, .submit-btn, .delete-btn, .update-btn {
 	text-align: center;
 	display: block;
+	width: 10%;
+	height: 5%;
 	margin-top: 3%;
 	margin-left: auto;
 	margin-right: auto;
