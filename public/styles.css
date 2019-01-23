@@ -175,3 +175,131 @@ a {
 	display: none;
 }
 
+@media only screen and (max-width: 800px) {
+
+	.get-btn {
+		width: 50%;
+	}
+
+	form {
+		width: 100%;
+		margin: 2% auto 2% auto;
+		padding-top: 1%;
+		padding-bottom: 1%;
+		text-align: center;
+		background-color: #EBEDEF;
+		border: 3px solid grey;
+		border-radius: 4px;
+	}
+
+	.delete-form, .search-form, .update-form, .submit-form {
+		display: inline-block;
+		width: 70%;
+	}
+
+	form > p {
+		margin-top: 5%;
+		margin-bottom: 3%;
+	}
+
+	.submit-form > label, .update-form > label {
+		width: 75%;
+		margin: 2% auto;
+
+	}
+
+	.submit-form > input[type='text'], .update-form > input[type='text'] {
+		width: 10px;
+		margin: 0;
+	}
+
+	.search-btn, .submit-btn, .delete-btn, .update-btn {
+		text-align: center;
+		display: block;
+		width: 25%;
+		height: 10%;
+		margin-top: 3%;
+		margin-left: auto;
+		margin-right: auto;
+		padding: auto;
+		border: 0.5px solid black;
+		border-radius: 2px;
+	}
+
+	.nav-link, .nav-link a{
+		width: 20%;
+	}
+
+	.nav-link a {
+		padding: 10px 12px;
+	}
+
+	.title {
+		padding-top: 10%;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+
+	.get-btn {
+		width: 85%;
+	}
+
+	form {
+		width: 100%;
+		margin: 2% auto 2% auto;
+		padding-top: 1%;
+		padding-bottom: 1%;
+		text-align: center;
+		background-color: #EBEDEF;
+		border: 3px solid grey;
+		border-radius: 4px;
+	}
+
+	.delete-form, .search-form, .update-form, .submit-form {
+		display: inline-block;
+		width: 90%;
+	}
+
+	form > p {
+		margin-top: 5%;
+		margin-bottom: 3%;
+	}
+
+	.submit-form > label, .update-form > label {
+		width: 95%;
+		margin: 2% auto;
+
+	}
+
+	.submit-form > input[type='text'], .update-form > input[type='text'] {
+		width: 10px;
+		margin: 0;
+	}
+
+	.search-btn, .submit-btn, .delete-btn, .update-btn {
+		text-align: center;
+		display: block;
+		width: 25%;
+		height: 10%;
+		margin-top: 3%;
+		margin-left: auto;
+		margin-right: auto;
+		padding: auto;
+		border: 0.5px solid black;
+		border-radius: 2px;
+	}
+
+	.nav-link, .nav-link a{
+		width: 20%;
+	}
+
+	.nav-link a {
+		padding: 10px 12px;
+	}
+
+	.title {
+		padding-top: 30%;
+	}
+}
+
