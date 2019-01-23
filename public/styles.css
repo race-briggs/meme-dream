@@ -98,7 +98,8 @@ a {
 .get-btn {
 	margin: auto;
 	font-weight: bold;
-	width: 30%;
+	font-size: 1.5em;
+	width: 45%;
 	height: 100%;
 	background-color: #BABBBC;
 	border: 2px solid black;
@@ -203,7 +204,7 @@ a {
 	}
 
 	.submit-form > label, .update-form > label {
-		width: 75%;
+		width: 70%;
 		margin: 2% auto;
 
 	}
