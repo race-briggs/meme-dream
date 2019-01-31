@@ -29,7 +29,7 @@ form {
 	text-align: center;
 	background-color: #EBEDEF;
 	border: 3px solid grey;
-	border-radius: 4px;
+	border-radius: 8px;
 }
 
 section {
@@ -155,17 +155,19 @@ a {
 	border-radius: 2px;
 }
 
-.get-result {
-	margin-top: 2%;
-}
-
 .get-separator {
 	margin-top: 0.5%;
 }
 
 .result-li {
+	width: 30%;
+	background-color: rgba(168, 168, 168, 0.5);
+	background-size: 
 	margin-top: 6%;
 	margin-bottom: 6%;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 8px;
 }
 
 .results {
@@ -177,6 +179,10 @@ a {
 }
 
 @media only screen and (max-width: 800px) {
+
+	.result-li {
+		width: 70%;
+	}
 
 	.get-btn {
 		width: 50%;
@@ -190,7 +196,7 @@ a {
 		text-align: center;
 		background-color: #EBEDEF;
 		border: 3px solid grey;
-		border-radius: 4px;
+		border-radius: 8px;
 	}
 
 	.delete-form, .search-form, .update-form, .submit-form {
@@ -242,6 +248,10 @@ a {
 
 @media only screen and (max-width: 400px) {
 
+	.result-li {
+		width: 90%;
+	}
+
 	.get-btn {
 		width: 85%;
 	}
@@ -254,7 +264,7 @@ a {
 		text-align: center;
 		background-color: #EBEDEF;
 		border: 3px solid grey;
-		border-radius: 4px;
+		border-radius: 8px;
 	}
 
 	.delete-form, .search-form, .update-form, .submit-form {

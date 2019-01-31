@@ -2,6 +2,8 @@
 
 const url = "https://sheltered-fortress-34693.herokuapp.com/memes"
 
+let currentMemeId;
+
 let callerFunction;
 
 function formatQueryParams(params) {
@@ -49,18 +51,38 @@ function showSection(){
 			`);
 	});
 	$('.update-nav').click(function(){
+
+		let foundMeme = {};
+		
+		fetch(url + '/' + currentMemeId, {
+			method: 'GET',
+			headers: {
+			'Access-Control-Allow-Origin': '*',
+			'Content-Type': 'application/json'
+		}})
+		.then(response => response.json())
+		.then(responseJson => {
+			foundMeme.name = responseJson.name;
+			foundMeme.origin = responseJson.origin;
+			foundMeme.type = responseJson.type;
+			foundMeme.example = responseJson.example;
+			return foundMeme;
+		})
+		.then(meme => {
 		$('.reset-div').addClass('hidden');
 		$('.results').addClass('hidden');
 		$('.forms-div').removeClass('hidden').empty().append(`
 			<form class="update-form" method="post">
 				<p>UPDATE A MEME</p>
-				<label class="submit-label">Meme ID:<input type="text" name="update-id" class="update-id" placeholder="Enter the Meme ID" required="true"></label>
-				<label class="submit-label">Meme name:<input type="text" name="new-meme-name" class="new-meme-name" placeholder="New name" required="true"></label>
-				<label class="submit-label">Meme type:<input type="text" name="new-meme-type" class="new-meme-type" placeholder="New type" required="true"></label>
-				<label class="submit-label">Meme origin:<input type="text" name="new-meme-origin" class="new-meme-origin" placeholder="New origin"></label>
+				<label class="submit-label">Meme ID:<input type="text" name="update-id" class="update-id" value="${currentMemeId}" required="true"></label>
+				<label class="submit-label">Meme name:<input type="text" name="new-meme-name" class="new-meme-name" value="${meme.name}" required="true"></label>
+				<label class="submit-label">Meme type:<input type="text" name="new-meme-type" class="new-meme-type" value="${meme.type}" required="true"></label>
+				<label class="submit-label">Meme origin:<input type="text" name="new-meme-origin" class="new-meme-origin" value="${meme.origin}" required="true"></label>
+				<label class="submit-label">Meme example: <input type="text" name="new-meme-example" class="new-meme-example" value="${meme.example}" required="true"></label>
 				<input role="button" class="update-btn" type="submit" name="submit-btn" value="Submit">
 			</form>
 			`);
+		});
 	});
 }
 
@@ -87,13 +109,13 @@ function getMemes(callbackFn){
 
 }
 
-function getById(id, callbackFn){
+function getByName(name, callbackFn){
 
-	callerFunction = 'getById';
+	callerFunction = 'getByName';
 
-	let urlWithId = url + '/' + id;
+	let urlWithName = url + '/' + name;
 
-		fetch(urlWithId, {
+		fetch(urlWithName, {
 		method: 'GET',
 		headers: {
 			'Access-Control-Allow-Origin': '*',
@@ -130,7 +152,7 @@ function deleteMeme(id){
 		console.log(responseJson)
 		$('.results-list').empty();
 		$('.results-list').append(
-			`<li><h3>${responseJson.message} at ID: ${responseJson._id}</h3></li>
+			`<li><h3>${responseJson.message} at ID: ${id}</h3></li>
 			`);
 		$('.results-list').removeClass('hidden');
 		$('.reset-div').removeClass('hidden');
@@ -141,12 +163,13 @@ function deleteMeme(id){
 	});
 }
 
-function submitMeme(memeName, memeOrigin, memeType){
+function submitMeme(memeName, memeOrigin, memeType, memeExample){
 
 	let memeData = {
 		name: memeName,
 		origin: memeOrigin,
-		type: memeType
+		type: memeType,
+		example: memeExample
 	};
 
 	fetch(url, {
@@ -165,9 +188,10 @@ function submitMeme(memeName, memeOrigin, memeType){
 		$('.results-list').append(
 			`<li class="result-li">
 			<h3>${responseJson.name}</h3>
-			<p>Origin: ${responseJson.origin}</p>
-			<p>Type: ${responseJson.type}</p>
-			<p>ID: ${responseJson._id}</p>
+			<p class="get-separator">Origin: ${responseJson.origin}</p>
+			<p class="get-separator">Type: ${responseJson.type}</p>
+			<p class="get-separator"><a href="${responseJson.example}">${responseJson.example}</a></p>
+			<p class="get-separator">ID: ${responseJson._id}</p>
 			</li>`);
 		$('.forms-div').addClass('hidden');
 		$('.results').removeClass('hidden');
@@ -178,14 +202,17 @@ function submitMeme(memeName, memeOrigin, memeType){
 	});
 }
 
-function updateMeme(id, newName, newType, newOrigin){
+function updateMeme(id, newName, newType, newOrigin, newExample){
 	let newData = {
 		name: newName,
 		type: newType,
-		origin: newOrigin
+		origin: newOrigin,
+		example: newExample
 	};
 
-	let fullUrl = url + '/' + id;
+	console.log(newData);
+
+	let fullUrl = url + '/' + currentMemeId;
 
 	fetch(fullUrl, {
 		method: 'PUT',
@@ -197,7 +224,7 @@ function updateMeme(id, newName, newType, newOrigin){
 	})
 	.then(response => {
 		console.log('meme updated');
-		getById(id);
+		getByName(newData.name);
 	})
 	.catch(err => {
 		console.error(err);
@@ -212,24 +239,32 @@ function displayMemes(data){
 			for(let i = 0; i < data.length; i++){
 				console.log(data[i].name, data[i].origin, data[i].type);
 				$('.results-list').append(
-					`<li class="get-result">
+					`<li class="result-li" data-id="${data[i]._id}">
 					<h3>${data[i].name}</h3>
 					<p class="get-separator">Origin: ${data[i].origin}</p>
 					<p class="get-separator">Type: ${data[i].type}</p>
+					<p class="get-separator"><a href="${data[i].example}">Example: ${data[i].example}</a></p>
 					<p class="get-separator">ID: ${data[i]._id}</p>
 					</li>`);}
-		} else if(callerFunction === 'getById') {
+		} else if(callerFunction === 'getByName') {
 			$('.results-list').append(
-				`<li>
+				`<li class="result-li" data-id="${data._id}">
 				<h3>${data.name}</h3>
-				<p>Origin: ${data.origin}</p>
-				<p>Type: ${data.type}</p>
-				<p>ID: ${data._id}</p>
+				<p class="get-separator">Origin: ${data.origin}</p>
+				<p class="get-separator">Type: ${data.type}</p>
+				<p class="get-separator">Example: ${data.example}</p>
+				<p class="get-separator">ID: ${data._id}</p>
 				</li>`);
 		}
 	$('.forms-div').addClass('hidden');
 	$('.results').removeClass('hidden');
 	$('.reset-div').removeClass('hidden');
+}
+
+function getId(){
+	$('.results-list').on('click', '.result-li', function(event){
+		currentMemeId = $(this).attr('data-id');
+	});
 }
 
 function watchGet(){
@@ -244,8 +279,8 @@ function watchSearch(){
 	$('.forms-div').on('click', '.search-btn', function(event){
 		event.preventDefault();
 		console.log('search initiated');
-		let memeId = $('.search-txt').val();
-		getById(memeId, displayMemes);
+		let memeName = $('.search-txt').val();
+		getByName(memeName, displayMemes);
 		$('.search-txt').val('');
 	});
 }
@@ -265,10 +300,12 @@ function watchSubmission(){
 		let memeName = $('.meme-name').val();
 		let memeOrigin = $('.meme-origin').val();
 		let memeType = $('.meme-type').val();
-		submitMeme(memeName, memeOrigin, memeType);
+		let memeExample = $('.meme-example').val();
+		submitMeme(memeName, memeOrigin, memeType, memeExample);
 		$('.meme-name').val('');
 		$('.meme-type').val('');
 		$('.meme-origin').val('');
+		$('.meme-example').val('');
 	});
 }
 
@@ -279,16 +316,19 @@ function watchUpdate(){
 		let newName = $('.new-meme-name').val();
 		let newOrigin = $('.new-meme-origin').val();
 		let newType = $('.new-meme-type').val();
-		updateMeme(updateId, newName, newOrigin, newType);
+		let newExample = $('.new-meme-example').val();
+		updateMeme(updateId, newName, newOrigin, newType, newExample);
 		$('.update-id').val('');
 		$('.new-meme-name').val('');
 		$('.new-meme-type').val('');
 		$('.new-meme-origin').val('');
+		$('.new-meme-example').val('');
 	})
 }
 
 function eventHandler(){
 	showSection();
+	getId();
 	watchGet();
 	watchSearch();
 	watchDelete();

@@ -7,7 +7,8 @@ mongoose.Promise = global.Promise;
 const memeEntrySchema = mongoose.Schema({
 	name: {type: String, required: true},
 	type: {type: String, required: true},
-	origin: {type: String}
+	origin: {type: String},
+	example: {type: String}
 });
 
 const MemeEntry = mongoose.model('Meme', memeEntrySchema);

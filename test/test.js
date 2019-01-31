@@ -27,7 +27,8 @@ function generateMemeData(){
 	return {
 		name: faker.name.firstName(),
 		type: faker.lorem.word(),
-		origin: faker.lorem.word()
+		origin: faker.lorem.word(),
+		example: faker.lorem.word()
 	};
 };
 
@@ -113,7 +114,7 @@ describe("meme-db app", function(){
 					expect(res).to.have.status(201);
 					expect(res).to.be.json;
 					expect(res.body).to.be.a('object');
-					expect(res.body).to.include.keys('name', 'type', 'origin');
+					expect(res.body).to.include.keys('name', 'type', 'origin', 'example');
 					expect(res.body.name).to.equal(newMeme.name);
 					expect(res.body.id).to.not.be.null;
 					newMeme._id = res.body._id;
