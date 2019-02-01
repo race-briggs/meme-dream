@@ -51,7 +51,7 @@ ul {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: radial-gradient(circle at 100%, #21AAFF, #888888);
+	background: rgba(33, 170, 255, 0.5);
 }
 
 input[type='text'] {
@@ -159,6 +159,10 @@ a {
 	margin-top: 0.5%;
 }
 
+.results-list {
+	background: radial-gradient(circle at 100%, #21AAFF, #888888);
+}
+
 .result-li {
 	width: 30%;
 	background-color: rgba(168, 168, 168, 0.5);
@@ -172,6 +176,10 @@ a {
 
 .results {
 	margin: 2% auto;
+}
+
+.example-link {
+	text-decoration: underline;
 }
 
 .hidden {

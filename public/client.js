@@ -33,7 +33,7 @@ function showSection(){
 				<label class="submit-label">Meme name:<input type="text" name="meme-name" class="meme-name" placeholder="Name" required="true"></label>
 				<label class="submit-label">Meme type:<input type="text" name="meme-type" class="meme-type" placeholder="Type" required="true"></label>
 				<label class="submit-label">Meme origin:<input type="text" name="meme-origin" class="meme-origin" placeholder="Origin" required="true"></label>
-				<label class="submit-label">Example image:<input type="text" name="meme-origin" class="meme-image" placeholder="Image url"></label>
+				<label class="submit-label">Example image:<input type="text" name="meme-example" class="meme-example" placeholder="Image url"></label>
 				<input role="button" class="submit-btn" type="submit" name="submit-btn" value="Submit">
 			</form>
 			`);
@@ -91,7 +91,6 @@ function getMemes(callbackFn){
 	fetch(url, {
 		method: 'GET',
 		headers: {
-			'Access-Control-Allow-Origin': '*',
 			'Content-Type': 'application/json'
 	}})
 		.then(response => {
@@ -118,7 +117,6 @@ function getByName(name, callbackFn){
 		fetch(urlWithName, {
 		method: 'GET',
 		headers: {
-			'Access-Control-Allow-Origin': '*',
 			'Content-Type': 'application/json'
 	}})
 		.then(response => {
@@ -163,22 +161,16 @@ function deleteMeme(id){
 	});
 }
 
-function submitMeme(memeName, memeOrigin, memeType, memeExample){
+function submitMeme(options){
 
-	let memeData = {
-		name: memeName,
-		origin: memeOrigin,
-		type: memeType,
-		example: memeExample
-	};
+	console.log(options);
 
 	fetch(url, {
 		method: 'POST',
 		headers: {
-			'Access-Control-Allow-Origin': '*',
 			'Content-Type': 'application/json'
 		},
-		body: JSON.stringify(memeData)
+		body: JSON.stringify(options)
 	})
 	.then(response => response.json())
 	.then(responseJson => {
@@ -202,15 +194,7 @@ function submitMeme(memeName, memeOrigin, memeType, memeExample){
 	});
 }
 
-function updateMeme(id, newName, newType, newOrigin, newExample){
-	let newData = {
-		name: newName,
-		type: newType,
-		origin: newOrigin,
-		example: newExample
-	};
-
-	console.log(newData);
+function updateMeme(options){
 
 	let fullUrl = url + '/' + currentMemeId;
 
@@ -220,11 +204,11 @@ function updateMeme(id, newName, newType, newOrigin, newExample){
 			'Access-Control-Allow-Origin': '*',
 			'Content-Type': 'application/json'
 		},
-		body: JSON.stringify(newData)
+		body: JSON.stringify(options)
 	})
 	.then(response => {
 		console.log('meme updated');
-		getByName(newData.name);
+		getByName(options.name);
 	})
 	.catch(err => {
 		console.error(err);
@@ -243,7 +227,7 @@ function displayMemes(data){
 					<h3>${data[i].name}</h3>
 					<p class="get-separator">Origin: ${data[i].origin}</p>
 					<p class="get-separator">Type: ${data[i].type}</p>
-					<p class="get-separator"><a href="${data[i].example}">Example: ${data[i].example}</a></p>
+					<p class="get-separator">Example: <a class="example-link" href="${data[i].example}">${data[i].example}</a></p>
 					<p class="get-separator">ID: ${data[i]._id}</p>
 					</li>`);}
 		} else if(callerFunction === 'getByName') {
@@ -252,7 +236,7 @@ function displayMemes(data){
 				<h3>${data.name}</h3>
 				<p class="get-separator">Origin: ${data.origin}</p>
 				<p class="get-separator">Type: ${data.type}</p>
-				<p class="get-separator">Example: ${data.example}</p>
+				<p class="get-separator">Example: <a class="example-link" href="${data.example}">${data.example}</a></p>
 				<p class="get-separator">ID: ${data._id}</p>
 				</li>`);
 		}
@@ -301,7 +285,13 @@ function watchSubmission(){
 		let memeOrigin = $('.meme-origin').val();
 		let memeType = $('.meme-type').val();
 		let memeExample = $('.meme-example').val();
-		submitMeme(memeName, memeOrigin, memeType, memeExample);
+		let options = {
+			name: memeName,
+			origin: memeOrigin,
+			type: memeType,
+			example: memeExample
+		};
+		submitMeme(options);
 		$('.meme-name').val('');
 		$('.meme-type').val('');
 		$('.meme-origin').val('');
@@ -317,7 +307,14 @@ function watchUpdate(){
 		let newOrigin = $('.new-meme-origin').val();
 		let newType = $('.new-meme-type').val();
 		let newExample = $('.new-meme-example').val();
-		updateMeme(updateId, newName, newOrigin, newType, newExample);
+		let options = {
+			id: updateId,
+			name: newName,
+			origin: newOrigin,
+			type: newType,
+			example: newExample 
+		};
+		updateMeme(options);
 		$('.update-id').val('');
 		$('.new-meme-name').val('');
 		$('.new-meme-type').val('');

@@ -33,15 +33,15 @@ router.get('/:id', (req, res) => {
 
 router.get('/:name', (req, res) => {
 	console.log(req.params.name);
-	MemeEntry.findOne({name: req.params.name})
-		.then(meme => {
-			console.log(meme);
-			return res.json(meme);
-		})
-		.catch(err => {
-			console.error(err);
-			return res.status(500).json({error: 'Internal server error'});
-		});
+	//MemeEntry.findOne({name: req.params.name})
+	//	.then(meme => {
+	//		console.log(meme);
+	//		return res.json(meme);
+	//	})
+	//	.catch(err => {
+	//		console.error(err);
+	//		return res.status(500).json({error: 'Internal server error'});
+	//	});
 });
 
 router.post('/', (req, res) => {
