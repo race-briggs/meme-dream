@@ -84,11 +84,9 @@ describe("meme-db app", function(){
 						expect(memeEnt).to.include.keys('name', 'type', 'origin');
 					});
 					resMeme = res.body[0];
-					console.log(resMeme);
 					return MemeEntry.findById(resMeme._id);
 				})
 				.then(memeEnt => {
-					console.log(memeEnt);
 					expect(resMeme._id.toString()).to.equal(memeEnt._id.toString());
 					expect(resMeme.name).to.equal(memeEnt.name);
 					expect(resMeme.type).to.equal(memeEnt.type);
@@ -110,7 +108,6 @@ describe("meme-db app", function(){
 				.post('/memes')
 				.send(newMeme)
 				.then(function(res){
-					console.log(res);
 					expect(res).to.have.status(201);
 					expect(res).to.be.json;
 					expect(res.body).to.be.a('object');
@@ -139,9 +136,7 @@ describe("meme-db app", function(){
 			return MemeEntry
 				.findOne()
 				.then(function(meme){
-					console.log(meme)
 					updateData._id = meme._id;
-					console.log(updateData);
 					return chai.request(app)
 						.put(`/memes/${meme._id}`)
 						.send(updateData)
@@ -168,7 +163,6 @@ describe("meme-db app", function(){
 				.findOne()
 				.then(function(res){
 					targetMeme = res;
-					console.log(targetMeme);
 					return chai.request(app).delete(`/memes/${targetMeme._id}`);
 				})
 				.then(function(res){
