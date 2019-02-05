@@ -139,7 +139,6 @@ function deleteMeme(id){
 	fetch(urlWithId, {
 	method: 'DELETE',
 	headers: {
-		'Access-Control-Allow-Origin': '*',
 		'Content-Type': 'application/json'
 	}})
 	.then(response => {
@@ -201,7 +200,6 @@ function updateMeme(options){
 	fetch(fullUrl, {
 		method: 'PUT',
 		headers: {
-			'Access-Control-Allow-Origin': '*',
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify(options)
