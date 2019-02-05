@@ -113,6 +113,7 @@ function getByName(name, callbackFn){
 	callerFunction = 'getByName';
 
 	let urlWithName = url + '/' + name;
+	console.log(urlWithName);
 
 		fetch(urlWithName, {
 		method: 'GET',
@@ -262,6 +263,7 @@ function watchSearch(){
 		event.preventDefault();
 		console.log('search initiated');
 		let memeName = $('.search-txt').val();
+		console.log(memeName);
 		getByName(memeName, displayMemes);
 		$('.search-txt').val('');
 	});
