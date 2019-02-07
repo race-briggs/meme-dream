@@ -5,7 +5,7 @@ Created by Race Briggs for the Thinkful Coding School capstone project
 
 Hosted at: https://sheltered-fortress-34693.herokuapp.com/
 
--------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------
 
 <h2>Instructions</h2>
 
@@ -34,4 +34,5 @@ MemeDream also incorporates TravisCI for external testing and deployment, and He
 
 <h2>Screenshots</h2>
 
+![meme-dream landing page](/meme-dream/screenshots/memedream-landing-page?raw=true "Landing Page")
 
