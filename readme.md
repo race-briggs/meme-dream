@@ -34,5 +34,5 @@ MemeDream also incorporates TravisCI for external testing and deployment, and He
 
 <h2>Screenshots</h2>
 
-![meme-dream landing page](/meme-dream/screenshots/memedream-landing-page?raw=true "Landing Page")
+![meme-dream landing page](/screenshots/memedream-landing-page?raw=true "Landing Page")
 
