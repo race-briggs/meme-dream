@@ -21,6 +21,10 @@ p, h1, h2 {
 	text-align: center;
 }
 
+p {
+	margin-bottom: 2%;
+}
+
 form {
 	width: 60%;
 	margin: 2% auto 2% auto;
@@ -286,7 +290,7 @@ a {
 		margin-bottom: 3%;
 	}
 
-	.submit-form > label, .update-form > label {
+ .submit-form > label, .update-form > label {
 		width: 95%;
 		margin: 2% auto;
 
@@ -302,7 +306,7 @@ a {
 		display: block;
 		width: 25%;
 		height: 10%;
-		margin-top: 3%;
+		margin-top: 5%;
 		margin-left: auto;
 		margin-right: auto;
 		padding: auto;

@@ -31,11 +31,10 @@ router.get('/:id', (req, res) => {
 		});
 });
 
-router.get('/:name', (req, res) => {
+router.get('/search/:name', (req, res) => {
 	console.log(req.params.name);
 	MemeEntry.findOne({name: req.params.name})
 		.then(meme => {
-			console.log(meme);
 			return res.json(meme);
 		})
 		.catch(err => {
@@ -62,7 +61,6 @@ router.post('/', (req, res) => {
 		example: req.body.example
 	})
 		.then(meme => {
-			console.log(meme);
 			return res.status(201).json(meme);
 		})
 		.catch(err => {
@@ -118,9 +116,10 @@ router.put('/:name', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-	MemeEntry.findByIdAndRemove(req.params.id)
+	return MemeEntry.findByIdAndRemove(req.params.id)
 		.then(() => {
-			res.status(204).json({message: 'Item successfully deleted'})
+			console.log('deleting entry...');
+			return res.status(204).end();
 		})
 		.catch(err => {
 			console.error(err);

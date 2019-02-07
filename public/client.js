@@ -1,6 +1,6 @@
 'use strict';
 
-const url = "https://sheltered-fortress-34693.herokuapp.com/memes"
+const url = "https://sheltered-fortress-34693.herokuapp.com/memes";
 
 let currentMemeId;
 
@@ -18,9 +18,9 @@ function showSection(){
 		$('.results').addClass('hidden');
 		$('.forms-div').removeClass('hidden').empty().append(`
 			<form class="search-form" method="get">
-				<p class="dual-header">SEARCH FOR A MEME</p>
-				<label class="meme-search" for="meme-search"> Search for a meme by ID:
-				<input class="search-txt" type="text" name="meme-search" placeholder="Enter a meme ID" required="true"></label>
+				<p>SEARCH FOR A MEME</p>
+				<label class="meme-search" for="meme-search"> Search for a meme:
+				<input class="search-txt" type="text" name="meme-search" placeholder="Meme name" required="true"></label>
 				<input role="button" class="search-btn" type="submit" name="search-btn" value="Search">
 			</form>`);
 	});
@@ -43,7 +43,7 @@ function showSection(){
 		$('.results').addClass('hidden');
 		$('.forms-div').removeClass('hidden').empty().append(`
 			<form class="delete-form" method="delete">
-				<p class="dual-header">DELETE A MEME</p>
+				<p>DELETE A MEME</p>
 				<label class="meme-delete" for="meme-delete"> Delete a meme by ID:
 				<input class="delete-txt" type="text" name="meme-delete" placeholder="Enter a meme ID" required="true"></label>
 				<input role="button" class="delete-btn" type="submit" name="search-btn" value="Delete">
@@ -112,7 +112,7 @@ function getByName(name, callbackFn){
 
 	callerFunction = 'getByName';
 
-	let urlWithName = url + '/' + name;
+	let urlWithName = url + '/search/' + name;
 	console.log(urlWithName);
 
 		fetch(urlWithName, {
@@ -137,28 +137,23 @@ function getByName(name, callbackFn){
 function deleteMeme(id){
 	let urlWithId = url + '/' + id;
 
-	fetch(urlWithId, {
-	method: 'DELETE',
-	headers: {
-		'Content-Type': 'application/json'
-	}})
-	.then(response => {
-		console.log(response);
-		return response.json();
+	return fetch(urlWithId, {
+	method: 'delete'
 	})
-	.then(responseJson => {
-		console.log(responseJson)
-		$('.results-list').empty();
-		$('.results-list').append(
-			`<li><h3>${responseJson.message} at ID: ${id}</h3></li>
-			`);
-		$('.results-list').removeClass('hidden');
-		$('.reset-div').removeClass('hidden');
-		$('.forms-div').addClass('hidden');
+	.then(response => {
+		console.log('hello!');
+	$('.results-list').html(
+		`<li><h3>Item successfully deleted.</h3></li>
+		`);
+	$('.forms-div').addClass('hidden');
+	$('.results').removeClass('hidden');
+	$('.reset-div').removeClass('hidden');
+	
 	})
 	.catch(err => {
 		console.error(err);
 	});
+
 }
 
 function submitMeme(options){
