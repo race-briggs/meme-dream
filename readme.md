@@ -34,11 +34,11 @@ MemeDream also incorporates TravisCI for external testing and deployment, and He
 
 <h2>Screenshots</h2>
 
-![meme-dream-landing page](https://imgur.com/JIbP7BE?raw=true "Landing Page")
+![meme-dream-landing page](https://imgur.com/JIbP7BE "Landing Page")
 
-![meme-dream-update](https://imgur.com/BpX4Mat?raw=true "Landing Page")
+![meme-dream-update](https://imgur.com/BpX4Mat "Update Page")
 
-![meme-dream-results](https://imgur.com/2TjbNA0?raw=true "Landing Page")
+![meme-dream-results](https://imgur.com/2TjbNA0 "Results Page")
 
-![meme-dream-landing-page](https://imgur.com/qvR5szm?raw=true "Landing Page")
+![meme-dream-landing-page](https://imgur.com/qvR5szm "Mobile Page")
 
