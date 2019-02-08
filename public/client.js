@@ -6,12 +6,8 @@ let currentMemeId;
 
 let callerFunction;
 
-function formatQueryParams(params) {
-  const queryItems = Object.keys(params)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-  return queryItems.join('&');
-}
 
+//looks for navigation from the navbar and displays the proper form
 function showSection(){
 	$('.search-nav').click(function(){
 		$('.reset-div').addClass('hidden');
@@ -86,6 +82,7 @@ function showSection(){
 	});
 }
 
+//ggets the current collection of memes
 function getMemes(callbackFn){
 	callerFunction = 'getMemes';
 	fetch(url, {
@@ -105,9 +102,9 @@ function getMemes(callbackFn){
 		.catch(err => {
 			console.error(err);
 		});
-
 }
 
+//gets a meme by name
 function getByName(name, callbackFn){
 
 	callerFunction = 'getByName';
@@ -134,6 +131,7 @@ function getByName(name, callbackFn){
 		});
 }
 
+//deletes a meme by ID only, for security
 function deleteMeme(id){
 	let urlWithId = url + '/' + id;
 
@@ -148,14 +146,13 @@ function deleteMeme(id){
 	$('.forms-div').addClass('hidden');
 	$('.results').removeClass('hidden');
 	$('.reset-div').removeClass('hidden');
-	
 	})
 	.catch(err => {
 		console.error(err);
 	});
-
 }
 
+//posts a meme to the database
 function submitMeme(options){
 
 	console.log(options);
@@ -189,6 +186,7 @@ function submitMeme(options){
 	});
 }
 
+//updates a meme in the database
 function updateMeme(options){
 
 	let fullUrl = url + '/' + currentMemeId;
@@ -209,6 +207,7 @@ function updateMeme(options){
 	});
 }
 
+//displays memes based on the calling function
 function displayMemes(data){
 	console.log(callerFunction);
 	console.log(data);
@@ -245,6 +244,7 @@ function getId(){
 	});
 }
 
+//these next functions watch for the various form submissions, and queries based on the submissions
 function watchGet(){
 	$('.get-btn').click(function(event) {
 		console.log('click successful');
