@@ -49,6 +49,18 @@ function showSection(){
 	$('.update-nav').click(function(){
 
 		let foundMeme = {};
+
+		if(!(currentMemeId)){
+			$('.results-list').html(`
+			<li class="result-li">
+			<h3>No meme selected</h3>
+			<p class="get-separator">First find a meme and click on it to obtain its id.</p>
+			</li>
+			`)
+			$('.forms-div').addClass('hidden');
+			$('.results').removeClass('hidden');
+			$('.reset-div').removeClass('hidden');
+		} else {
 		
 		fetch(url + '/' + currentMemeId, {
 			method: 'GET',
@@ -58,10 +70,11 @@ function showSection(){
 		}})
 		.then(response => response.json())
 		.then(responseJson => {
-			foundMeme.name = responseJson.name;
-			foundMeme.origin = responseJson.origin;
-			foundMeme.type = responseJson.type;
-			foundMeme.example = responseJson.example;
+			foundMeme._id = currentMemeId || "";
+			foundMeme.name = responseJson.name || "";
+			foundMeme.origin = responseJson.origin || "";
+			foundMeme.type = responseJson.type || "";
+			foundMeme.example = responseJson.example || "";
 			return foundMeme;
 		})
 		.then(meme => {
@@ -70,7 +83,7 @@ function showSection(){
 		$('.forms-div').removeClass('hidden').empty().append(`
 			<form class="update-form" method="post">
 				<p>UPDATE A MEME</p>
-				<label class="submit-label">Meme ID:<input type="text" name="update-id" class="update-id" value="${currentMemeId}" required="true"></label>
+				<label class="submit-label">Meme ID:<input type="text" name="update-id" class="update-id" value="${meme._id}" disabled="true"></label>
 				<label class="submit-label">Meme name:<input type="text" name="new-meme-name" class="new-meme-name" value="${meme.name}" required="true"></label>
 				<label class="submit-label">Meme type:<input type="text" name="new-meme-type" class="new-meme-type" value="${meme.type}" required="true"></label>
 				<label class="submit-label">Meme origin:<input type="text" name="new-meme-origin" class="new-meme-origin" value="${meme.origin}" required="true"></label>
@@ -79,10 +92,10 @@ function showSection(){
 			</form>
 			`);
 		});
-	});
+	}});
 }
 
-//ggets the current collection of memes
+//gets the current collection of memes
 function getMemes(callbackFn){
 	callerFunction = 'getMemes';
 	fetch(url, {
@@ -213,6 +226,7 @@ function displayMemes(data){
 	console.log(data);
 	$('.results-list').empty();
 		if(callerFunction === 'getMemes'){
+			console.log('we are in the function!');
 			for(let i = 0; i < data.length; i++){
 				console.log(data[i].name, data[i].origin, data[i].type);
 				$('.results-list').append(
@@ -223,8 +237,20 @@ function displayMemes(data){
 					<p class="get-separator">Example: <a class="example-link" href="${data[i].example}">${data[i].example}</a></p>
 					<p class="get-separator">ID: ${data[i]._id}</p>
 					</li>`);}
+					$('.forms-div').addClass('hidden');
+					$('.results').removeClass('hidden');
+					$('.reset-div').removeClass('hidden');
 		} else if(callerFunction === 'getByName') {
-			$('.results-list').append(
+			if(!data){
+				$('.results-list').html(`
+					<li class="result-li">
+					<h3>Meme entry not found</h3>
+					<p class="get-separator">Please try another name, or a different meme.</p>
+					</li>
+					`)
+					$('.results').removeClass('hidden');
+					$('.reset-div').removeClass('hidden');
+			}	else {$('.results-list').append(
 				`<li class="result-li" data-id="${data._id}">
 				<h3>${data.name}</h3>
 				<p class="get-separator">Origin: ${data.origin}</p>
@@ -232,10 +258,12 @@ function displayMemes(data){
 				<p class="get-separator">Example: <a class="example-link" href="${data.example}">${data.example}</a></p>
 				<p class="get-separator">ID: ${data._id}</p>
 				</li>`);
+				$('.forms-div').addClass('hidden');
+				$('.results').removeClass('hidden');
+				$('.reset-div').removeClass('hidden');
+			}
 		}
-	$('.forms-div').addClass('hidden');
-	$('.results').removeClass('hidden');
-	$('.reset-div').removeClass('hidden');
+	
 }
 
 function getId(){
