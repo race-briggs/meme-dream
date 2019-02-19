@@ -6,15 +6,33 @@
   border: 0;
   outline: 0;
   vertical-align: baseline;
+  -webkit-text-fill-color: black;
+  -webkit-text-stroke-width: .05px;
+  -webkit-text-stroke-color: black;
 }
 
-.title {
+.title, .reset-div {
+	font-family: 'Luckiest Guy', cursive;
 	padding-top: 5%;
+	font-weight: bold;
+	font-size: 2em;
+}
+
+.title h1, .title h2, .title-options, .reset-div {
+	background-color: rgba(168, 168, 168, 0.5);
+}
+
+.title-options {
+	margin-bottom: 0;
+}
+
+html, main {
+	background-image: url('../screenshots/kappa-banner.jpg');
 }
 
 
 body {
-	background: radial-gradient(circle at 100%, #21AAFF, #888888);
+	background-image: url('../screenshots/kappa-banner.jpg');
 }
 
 p, h1, h2 {
@@ -32,7 +50,7 @@ form {
 	padding-bottom: 1%;
 	text-align: center;
 	background-color: #EBEDEF;
-	border: 3px solid grey;
+	border: 2px solid black;
 	border-radius: 8px;
 }
 
@@ -51,11 +69,14 @@ nav {
 }
 
 ul {
+	-webkit-text-fill-color: white;
+  -webkit-text-stroke-width: none;
+  -webkit-text-stroke-color: black;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background: rgba(33, 170, 255, 0.5);
+	background: rgba(0, 0, 0, 1);
 }
 
 input[type='text'] {
@@ -72,7 +93,9 @@ label {
 
 .nav-link a {
 	display: block;
-	color: white;
+	-webkit-text-fill-color: white;
+  -webkit-text-stroke-width: none;
+  -webkit-text-stroke-color: black;
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
@@ -80,11 +103,14 @@ label {
 }
 
 .nav-link a:hover {
-	background-color: black;
+	background-color: white;
+	-webkit-text-fill-color: black;
+  -webkit-text-stroke-width: none;
+  -webkit-text-stroke-color: black;
 }
 
 a {
-	color: black;
+	color: white;
 	text-decoration: none;
 }
 
@@ -111,7 +137,9 @@ a {
 }
 
 .get-btn:hover, .search-btn:hover, .submit-btn:hover, .delete-btn:hover, .update-btn:hover {
-	background-color: black;
+	-webkit-text-fill-color: white;
+  -webkit-text-stroke-width: none;
+  -webkit-text-stroke-color: white;
 	color: white;
 }
 
@@ -164,12 +192,14 @@ a {
 }
 
 .results-list {
-	background: radial-gradient(circle at 100%, #21AAFF, #888888);
+	padding-top: 2%;
+	background-image: url('../screenshots/kappa-banner.jpg');
 }
 
 .result-li {
 	width: 30%;
-	background-color: rgba(168, 168, 168, 0.5);
+	background-color: rgba(168, 168, 168, 0.9);
+	color: black;
 	background-size: 
 	margin-top: 6%;
 	margin-bottom: 6%;
@@ -190,7 +220,19 @@ a {
 	display: none;
 }
 
+.reset-div {
+	text-align: center;
+	padding: 0;
+	margin: auto;
+}
+
 @media only screen and (max-width: 800px) {
+
+	.title, .reset-div {
+		padding-top: 5%;
+		font-weight: bold;
+		font-size: 1em;
+	}
 
 	.result-li {
 		width: 70%;
@@ -259,6 +301,12 @@ a {
 }
 
 @media only screen and (max-width: 400px) {
+
+	.title, .reset-div {
+		padding-top: 5%;
+		font-weight: bold;
+		font-size: 1em;
+	}
 
 	.result-li {
 		width: 90%;
