@@ -46,7 +46,7 @@ function showSection(){
 			</form>
 			`);
 	});
-	$('.update-nav').click(function(){
+	$('.update-btn').click(function(){
 
 		let foundMeme = {};
 
@@ -236,6 +236,11 @@ function displayMemes(data){
 					<p class="get-separator">Origin: ${data[i].origin}</p>
 					<p class="get-separator">Type: ${data[i].type}</p>
 					<p class="get-separator">ID: ${data[i]._id}</p>
+					<ul class="actions-ul">
+						<li class="actions"><button class="update-btn">Update</button></li>
+						<li class="actions"><button class="delete-btn">Delete</button></li>
+					</ul>
+					
 					</li>`);}
 					$('.forms-div').addClass('hidden');
 					$('.results').removeClass('hidden');
@@ -264,12 +269,6 @@ function displayMemes(data){
 			}
 		}
 	
-}
-
-function getId(){
-	$('.results-list').on('click', '.result-li', function(event){
-		currentMemeId = $(this).attr('data-id');
-	});
 }
 
 //these next functions watch for the various form submissions, and queries based on the submissions
@@ -348,7 +347,6 @@ function watchUpdate(){
 
 function eventHandler(){
 	showSection();
-	getId();
 	watchGet();
 	watchSearch();
 	watchDelete();

@@ -87,8 +87,12 @@ label {
 	margin-top: 3%;
 }
 
+.nav-list {
+	display: flex;
+}
+
 .nav-link {
-	float: left;
+	flex-grow: 1;
 }
 
 .nav-link a {
@@ -97,9 +101,9 @@ label {
   -webkit-text-stroke-width: none;
   -webkit-text-stroke-color: black;
 	text-align: center;
-	padding: 14px 16px;
 	text-decoration: none;
-
+	overflow: hidden;
+	padding: 4% 0;
 }
 
 .nav-link a:hover {
@@ -107,6 +111,7 @@ label {
 	-webkit-text-fill-color: black;
   -webkit-text-stroke-width: none;
   -webkit-text-stroke-color: black;
+  cursor: pointer;
 }
 
 a {
@@ -137,26 +142,31 @@ a {
 }
 
 .get-btn:hover, .search-btn:hover, .submit-btn:hover, .delete-btn:hover, .update-btn:hover {
-	-webkit-text-fill-color: white;
+	-webkit-text-fill-color: black;
   -webkit-text-stroke-width: none;
-  -webkit-text-stroke-color: white;
+  -webkit-text-stroke-color: black;
 	background-color: white;
+	cursor: pointer;
 }
 
 .search-btn:active {
 	background-color: #2CBD4A;
+	cursor: pointer;
 }
 
 .submit-btn:active {
 	background-color: #273FDD;
+	cursor: pointer;
 }
 
 .get-btn:active {
 	background-color: green;
+	cursor: pointer;
 }
 
 .delete-btn:active {
 	background-color: #F92F2F;
+	cursor: pointer;
 }
 
 .submit-form > label, .update-form > label {
@@ -174,7 +184,7 @@ a {
 	float: right;
 }
 
-.search-btn, .submit-btn, .delete-btn, .update-btn {
+.search-btn, .submit-btn{
 	text-align: center;
 	display: block;
 	width: 10%;
@@ -230,6 +240,24 @@ a {
 
 }
 
+.actions-ul {
+	background: transparent;
+	display: flex;
+}
+
+.actions {
+	flex-grow: 1;
+	padding: 10px;
+}
+
+.update-btn, .delete-btn {
+	text-align: center;
+	display: block;
+	border-radius: 2px;
+	border: 2px solid black;
+	height: 100%;
+}
+
 @media only screen and (max-width: 800px) {
 
 	.title, .reset-div {
@@ -278,7 +306,7 @@ a {
 		margin: 0;
 	}
 
-	.search-btn, .submit-btn, .delete-btn, .update-btn {
+	.search-btn, .submit-btn{
 		text-align: center;
 		display: block;
 		width: 25%;
@@ -289,14 +317,6 @@ a {
 		padding: auto;
 		border: 0.5px solid black;
 		border-radius: 2px;
-	}
-
-	.nav-link, .nav-link a{
-		width: 20%;
-	}
-
-	.nav-link a {
-		padding: 10px 12px;
 	}
 
 	.title {
@@ -353,7 +373,7 @@ a {
 		margin: 0;
 	}
 
-	.search-btn, .submit-btn, .delete-btn, .update-btn {
+	.search-btn, .submit-btn{
 		text-align: center;
 		display: block;
 		width: 25%;
@@ -364,14 +384,6 @@ a {
 		padding: auto;
 		border: 0.5px solid black;
 		border-radius: 2px;
-	}
-
-	.nav-link, .nav-link a{
-		width: 20%;
-	}
-
-	.nav-link a {
-		padding: 10px 12px;
 	}
 
 	.title {
