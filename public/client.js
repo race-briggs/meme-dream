@@ -232,9 +232,9 @@ function displayMemes(data){
 				$('.results-list').append(
 					`<li class="result-li" data-id="${data[i]._id}">
 					<h3>${data[i].name}</h3>
+					<p class="get-separator"><a class="example-link"><img class="example-img" src="${data[i].example}"></a></p>
 					<p class="get-separator">Origin: ${data[i].origin}</p>
 					<p class="get-separator">Type: ${data[i].type}</p>
-					<p class="get-separator">Example: <a class="example-link" href="${data[i].example}">${data[i].example}</a></p>
 					<p class="get-separator">ID: ${data[i]._id}</p>
 					</li>`);}
 					$('.forms-div').addClass('hidden');

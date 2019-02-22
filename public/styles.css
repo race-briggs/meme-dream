@@ -19,7 +19,7 @@
 }
 
 .title h1, .title h2, .title-options, .reset-div {
-	background-color: rgba(168, 168, 168, 0.5);
+	background-color: rgba(168, 168, 168, 0.7);
 }
 
 .title-options {
@@ -27,12 +27,12 @@
 }
 
 html, main {
-	background-image: url('../screenshots/kappa-banner.jpg');
+	background-image: url('/screenshots/kappa-banner.jpg');
 }
 
 
 body {
-	background-image: url('../screenshots/kappa-banner.jpg');
+	background-image: url('/screenshots/kappa-banner.jpg');
 }
 
 p, h1, h2 {
@@ -140,7 +140,7 @@ a {
 	-webkit-text-fill-color: white;
   -webkit-text-stroke-width: none;
   -webkit-text-stroke-color: white;
-	color: white;
+	background-color: white;
 }
 
 .search-btn:active {
@@ -224,6 +224,10 @@ a {
 	text-align: center;
 	padding: 0;
 	margin: auto;
+}
+
+.example-img {
+
 }
 
 @media only screen and (max-width: 800px) {
