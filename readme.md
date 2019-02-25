@@ -11,7 +11,7 @@ Hosted at: https://sheltered-fortress-34693.herokuapp.com/
 
 <p>MemeDream is fairly easy to use. Simply click the main button to get the current collection of memes, or select one of the other options from the top nav-bar to reach other functions. The app will make calls to the resting API in order to perform your desired query.</p>
 
-<p>The only strangely specific action one must perform comes when updating the meme. If you know the ID for the meme, then you won't have to do this, however in order to make it easier for everyday users who do not want to write down a 20+ digit randomized ID, I added another option. If you search for a meme, or simply populate the collection on the landing page, and you click on any of the memes it will copy the entry's information. You can then subsequently click on the update tab, which will have the various forms automatically populate with all of the meme's current information.</p>
+<p>Update and delete functionality are on the results entry. Simply use one of the buttons on the meme, and follow the prompts for the desired edit or deletion.</p>
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -34,11 +34,9 @@ MemeDream also incorporates TravisCI for external testing and deployment, and He
 
 <h2>Screenshots</h2>
 
-![meme-dream-landing page](./screenshots/md-landing-page.png "Landing Page")
+![meme-dream-landing page](./screenshots/meme-dream-landing.png "Landing Page")
 
-![meme-dream-update](./screenshots/md-update.png "Update Page")
+![meme-dream-results](./screenshots/mmeme-dream-results.png "Results Page")
 
-![meme-dream-results](./screenshots/md-results.png "Results Page")
-
-![meme-dream-landing-page](./screenshots/md-mobile.png "Mobile Page")
+![meme-dream-landing-page](./screenshots/meme-dream-mobile.png "Mobile Page")
 
