@@ -141,6 +141,10 @@ a {
 	border-radius: 2px;
 }
 
+.forms-div {
+	margin-bottom: 0;
+}
+
 .get-btn:hover, .search-btn:hover, .submit-btn:hover, .delete-btn:hover, .update-btn:hover, .update-submit:hover {
 	-webkit-text-fill-color: black;
   -webkit-text-stroke-width: none;
@@ -265,10 +269,6 @@ a {
 	border: 2px solid black;
 	height: 100%;
 	padding: 5px;
-}
-
-.title-options {
-	margin-bottom: 0;
 }
 
 @media only screen and (max-width: 800px) {

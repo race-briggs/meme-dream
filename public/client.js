@@ -46,7 +46,7 @@ function showSection(){
 	//		</form>
 	//		`);
 	//});
-	$('.update-btn').click(function(){
+	$('.results-list').on('click', '.update-btn', function(){
 
 		console.log('click successful');
 
