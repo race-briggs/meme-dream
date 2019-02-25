@@ -54,9 +54,9 @@ function showSection(){
 
 		currentMemeName = String($('.event-name').html());
 
-		console.log(currentMemeId);
+		console.log(currentMemeName);
 
-		if(!(currentMemeId)){
+		if(!(currentMemeName)){
 			$('.results-list').html(`
 			<li class="result-li">
 			<h3>No meme selected</h3>
@@ -76,8 +76,8 @@ function showSection(){
 		}})
 		.then(response => response.json())
 		.then(responseJson => {
-			foundMeme._id = currentMemeId || "";
-			foundMeme.name = responseJson.name || "";
+			foundMeme._id = responseJson._id || "";
+			foundMeme.name = currentMemeName || "";
 			foundMeme.origin = responseJson.origin || "";
 			foundMeme.type = responseJson.type || "";
 			foundMeme.example = responseJson.example || "";
