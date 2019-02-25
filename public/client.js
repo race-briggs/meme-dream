@@ -76,6 +76,7 @@ function showSection(){
 		}})
 		.then(response => response.json())
 		.then(responseJson => {
+			console.log(responseJson);
 			foundMeme._id = responseJson._id || "";
 			foundMeme.name = currentMemeName || "";
 			foundMeme.origin = responseJson.origin || "";
