@@ -50,7 +50,7 @@ function showSection(){
 
 		let foundMeme = {};
 
-		currentMemeId = $('.li-id').html();
+		currentMemeId = String($('.li-id').html());
 
 		console.log(currentMemeId);
 
