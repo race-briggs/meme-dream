@@ -48,6 +48,8 @@ function showSection(){
 	//});
 	$('.update-btn').click(function(){
 
+		console.log('click successful');
+
 		let foundMeme = {};
 
 		currentMemeId = String($('.li-id').html());
