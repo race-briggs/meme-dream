@@ -308,6 +308,7 @@ function watchSearch(){
 function watchDelete(){
 	$('.results-list').on('click', '.delete-btn', function(event){
 		event.preventDefault();
+		console.log('in the delete function');
 		deleteMemeId = String($(this).closest('.result-li').find('.delete-id').html());
 		if(confirm("Are you sure you want to delete this meme?")){
 			deleteMeme(deleteMemeId);
