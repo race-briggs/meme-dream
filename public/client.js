@@ -34,21 +34,25 @@ function showSection(){
 			</form>
 			`);
 	});
-	$('.delete-nav').click(function(){
-		$('.reset-div').addClass('hidden');
-		$('.results').addClass('hidden');
-		$('.forms-div').removeClass('hidden').empty().append(`
-			<form class="delete-form" method="delete">
-				<p>DELETE A MEME</p>
-				<label class="meme-delete" for="meme-delete"> Delete a meme by ID:
-				<input class="delete-txt" type="text" name="meme-delete" placeholder="Enter a meme ID" required="true"></label>
-				<input role="button" class="delete-btn" type="submit" name="search-btn" value="Delete">
-			</form>
-			`);
-	});
+	//$('.delete-nav').click(function(){
+	//	$('.reset-div').addClass('hidden');
+	//	$('.results').addClass('hidden');
+	//	$('.forms-div').removeClass('hidden').empty().append(`
+	//		<form class="delete-form" method="delete">
+	//			<p>DELETE A MEME</p>
+	//			<label class="meme-delete" for="meme-delete"> Delete a meme by ID:
+	//			<input class="delete-txt" type="text" name="meme-delete" placeholder="Enter a meme ID" required="true"></label>
+	//			<input role="button" class="delete-btn" type="submit" name="search-btn" value="Delete">
+	//		</form>
+	//		`);
+	//});
 	$('.update-btn').click(function(){
 
 		let foundMeme = {};
+
+		currentMemeId = $('.li-id').html();
+
+		console.log(currentMemeId);
 
 		if(!(currentMemeId)){
 			$('.results-list').html(`
@@ -183,13 +187,17 @@ function submitMeme(options){
 		console.log(responseJson);
 		$('.results-list').empty();
 		$('.results-list').append(
-			`<li class="result-li">
-			<h3>${responseJson.name}</h3>
-			<p class="get-separator">Origin: ${responseJson.origin}</p>
-			<p class="get-separator">Type: ${responseJson.type}</p>
-			<p class="get-separator"><a href="${responseJson.example}">${responseJson.example}</a></p>
-			<p class="get-separator">ID: ${responseJson._id}</p>
-			</li>`);
+			`<li class="result-li" data-id="${responseJson._id}">
+					<h3>${responseJson.name}</h3>
+					<p class="get-separator"><a href="${responseJson.example}" class="example-link"><img class="example-img" src="${responseJson.example}"></a></p>
+					<p class="get-separator">Origin: ${responseJson.origin}</p>
+					<p class="get-separator">Type: ${responseJson.type}</p>
+					<p class="get-separator li-id">ID: ${responseJson._id}</p>
+					<ul class="actions-ul">
+						<li class="actions"><button class="update-btn">Update</button></li>
+						<li class="actions"><button class="delete-btn">Delete</button></li>
+					</ul>
+					</li>`);
 		$('.forms-div').addClass('hidden');
 		$('.results').removeClass('hidden');
 		$('.reset-div').removeClass('hidden');
@@ -232,15 +240,14 @@ function displayMemes(data){
 				$('.results-list').append(
 					`<li class="result-li" data-id="${data[i]._id}">
 					<h3>${data[i].name}</h3>
-					<p class="get-separator"><a class="example-link"><img class="example-img" src="${data[i].example}"></a></p>
+					<p class="get-separator"><a href="${data[i].example}" class="example-link"><img class="example-img" src="${data[i].example}"></a></p>
 					<p class="get-separator">Origin: ${data[i].origin}</p>
 					<p class="get-separator">Type: ${data[i].type}</p>
-					<p class="get-separator">ID: ${data[i]._id}</p>
+					<p class="get-separator li-id">ID: ${data[i]._id}</p>
 					<ul class="actions-ul">
 						<li class="actions"><button class="update-btn">Update</button></li>
 						<li class="actions"><button class="delete-btn">Delete</button></li>
 					</ul>
-					
 					</li>`);}
 					$('.forms-div').addClass('hidden');
 					$('.results').removeClass('hidden');
@@ -257,12 +264,16 @@ function displayMemes(data){
 					$('.reset-div').removeClass('hidden');
 			}	else {$('.results-list').append(
 				`<li class="result-li" data-id="${data._id}">
-				<h3>${data.name}</h3>
-				<p class="get-separator">Origin: ${data.origin}</p>
-				<p class="get-separator">Type: ${data.type}</p>
-				<p class="get-separator">Example: <a class="example-link" href="${data.example}">${data.example}</a></p>
-				<p class="get-separator">ID: ${data._id}</p>
-				</li>`);
+					<h3>${data.name}</h3>
+					<p class="get-separator"><a href="${data.example}" ="example-link"><img class="example-img" src="${data[i].example}"></a></p>
+					<p class="get-separator">Origin: ${data.origin}</p>
+					<p class="get-separator">Type: ${data.type}</p>
+					<p class="get-separator li-id">ID: ${data._id}</p>
+					<ul class="actions-ul">
+						<li class="actions"><button class="update-btn">Update</button></li>
+						<li class="actions"><button class="delete-btn">Delete</button></li>
+					</ul>
+					</li>`);
 				$('.forms-div').addClass('hidden');
 				$('.results').removeClass('hidden');
 				$('.reset-div').removeClass('hidden');
@@ -292,7 +303,7 @@ function watchSearch(){
 }
 
 function watchDelete(){
-	$('.forms-div').on('click', '.delete-btn', function(event){
+	$('.actions-ul').on('click', '.delete-btn', function(event){
 		event.preventDefault();
 		let memeId = $('.delete-txt').val();
 		deleteMeme(memeId);
