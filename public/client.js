@@ -2,7 +2,7 @@
 
 const url = "https://sheltered-fortress-34693.herokuapp.com/memes";
 
-let currentMemeId;
+let currentMemeName;
 
 let callerFunction;
 
@@ -52,7 +52,7 @@ function showSection(){
 
 		let foundMeme = {};
 
-		currentMemeId = String($('.li-id').html());
+		currentMemeName = String($('.event-name').html());
 
 		console.log(currentMemeId);
 
@@ -68,7 +68,7 @@ function showSection(){
 			$('.reset-div').removeClass('hidden');
 		} else {
 		
-		fetch(url + '/' + currentMemeId, {
+		fetch(url + '/search/' + currentMemeName, {
 			method: 'GET',
 			headers: {
 			'Access-Control-Allow-Origin': '*',
@@ -190,11 +190,11 @@ function submitMeme(options){
 		$('.results-list').empty();
 		$('.results-list').append(
 			`<li class="result-li" data-id="${responseJson._id}">
-					<h3>${responseJson.name}</h3>
+					<h3 name="name"><span class="event-name">${responseJson.name}</span></h3>
 					<p class="get-separator"><a href="${responseJson.example}" class="example-link"><img class="example-img" src="${responseJson.example}"></a></p>
 					<p class="get-separator">Origin: ${responseJson.origin}</p>
 					<p class="get-separator">Type: ${responseJson.type}</p>
-					<p class="get-separator" name="id">ID: <span class="li-id">${responseJson._id}</span></p>
+					<p class="get-separator">ID: ${responseJson._id}</p>
 					<ul class="actions-ul">
 						<li class="actions"><button class="update-btn">Update</button></li>
 						<li class="actions"><button class="delete-btn">Delete</button></li>
@@ -241,11 +241,11 @@ function displayMemes(data){
 				console.log(data[i].name, data[i].origin, data[i].type);
 				$('.results-list').append(
 					`<li class="result-li" data-id="${data[i]._id}">
-					<h3>${data[i].name}</h3>
+					<h3 name="name"><span class="entry-name">${data[i].name}</span></h3>
 					<p class="get-separator"><a href="${data[i].example}" class="example-link"><img class="example-img" src="${data[i].example}"></a></p>
 					<p class="get-separator">Origin: ${data[i].origin}</p>
 					<p class="get-separator">Type: ${data[i].type}</p>
-					<p class="get-separator name="id"">ID: <span class="li-id">${data[i]._id}</span></p>
+					<p class="get-separator" >ID: ${data[i]._id}</p>
 					<ul class="actions-ul">
 						<li class="actions"><button class="update-btn">Update</button></li>
 						<li class="actions"><button class="delete-btn">Delete</button></li>
@@ -266,11 +266,11 @@ function displayMemes(data){
 					$('.reset-div').removeClass('hidden');
 			}	else {$('.results-list').append(
 				`<li class="result-li" data-id="${data._id}">
-					<h3>${data.name}</h3>
+					<h3 name="name"><span class="entry-name">${data.name}</span></h3>
 					<p class="get-separator"><a href="${data.example}" ="example-link"><img class="example-img" src="${data[i].example}"></a></p>
 					<p class="get-separator">Origin: ${data.origin}</p>
 					<p class="get-separator">Type: ${data.type}</p>
-					<p class="get-separator name="id"">ID: <span class="li-id">${data._id}</span></p>
+					<p class="get-separator" >ID: ${data._id}</p>
 					<ul class="actions-ul">
 						<li class="actions"><button class="update-btn">Update</button></li>
 						<li class="actions"><button class="delete-btn">Delete</button></li>
