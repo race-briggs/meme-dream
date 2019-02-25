@@ -161,7 +161,7 @@ function deleteMeme(id){
 	.then(response => {
 		console.log('hello!');
 	$('.results-list').html(
-		`<li><h3>Item successfully deleted.</h3></li>
+		`<li><h3 class="delete-success">Item successfully deleted.</h3></li>
 		`);
 	$('.forms-div').addClass('hidden');
 	$('.results').removeClass('hidden');
