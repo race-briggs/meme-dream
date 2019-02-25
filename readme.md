@@ -36,7 +36,7 @@ MemeDream also incorporates TravisCI for external testing and deployment, and He
 
 ![meme-dream-landing page](./screenshots/meme-dream-landing.png "Landing Page")
 
-![meme-dream-results](./screenshots/mmeme-dream-results.png "Results Page")
+![meme-dream-results](./screenshots/meme-dream-results.png "Results Page")
 
-![meme-dream-landing-page](./screenshots/meme-dream-mobile.png "Mobile Page")
+![meme-dream-mobile](./screenshots/meme-dream-mobile.png "Mobile Page")
 
