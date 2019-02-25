@@ -266,7 +266,7 @@ function displayMemes(data){
 			}	else {$('.results-list').append(
 				`<li class="result-li" data-id="${data._id}">
 					<h3 name="name"><span class="entry-name">${data.name}</span></h3>
-					<p class="get-separator"><a href="${data.example}" ="example-link"><img class="example-img" src="${data[i].example}"></a></p>
+					<p class="get-separator"><a href="${data.example}" ="example-link"><img class="example-img" src="${data.example}"></a></p>
 					<p class="get-separator">Origin: ${data.origin}</p>
 					<p class="get-separator">Type: ${data.type}</p>
 					<p class="get-separator" >ID: ${data._id}</p>
