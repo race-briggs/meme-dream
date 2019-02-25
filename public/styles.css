@@ -141,7 +141,7 @@ a {
 	border-radius: 2px;
 }
 
-.get-btn:hover, .search-btn:hover, .submit-btn:hover, .delete-btn:hover, .update-btn:hover {
+.get-btn:hover, .search-btn:hover, .submit-btn:hover, .delete-btn:hover, .update-btn:hover, .update-submit:hover {
 	-webkit-text-fill-color: black;
   -webkit-text-stroke-width: none;
   -webkit-text-stroke-color: black;
@@ -164,7 +164,12 @@ a {
 	cursor: pointer;
 }
 
-.delete-btn:active {
+.update-submit:active {
+	background-color: orange;
+	cursor: pointer;
+}
+
+.delete-btn:active, .update-btn:active {
 	background-color: #F92F2F;
 	cursor: pointer;
 }
@@ -184,7 +189,7 @@ a {
 	float: right;
 }
 
-.search-btn, .submit-btn{
+.search-btn, .submit-btn, .update-submit{
 	text-align: center;
 	display: block;
 	width: 10%;

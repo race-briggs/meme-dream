@@ -92,7 +92,7 @@ function showSection(){
 				<label class="submit-label">Meme type:<input type="text" name="new-meme-type" class="new-meme-type" value="${meme.type}" required="true"></label>
 				<label class="submit-label">Meme origin:<input type="text" name="new-meme-origin" class="new-meme-origin" value="${meme.origin}" required="true"></label>
 				<label class="submit-label">Meme example: <input type="text" name="new-meme-example" class="new-meme-example" value="${meme.example}" required="true"></label>
-				<input role="button" class="update-btn" type="submit" name="submit-btn" value="Submit">
+				<input role="button" class="update-submit" type="submit" name="submit-btn" value="Submit">
 			</form>
 			`);
 		});
@@ -333,7 +333,7 @@ function watchSubmission(){
 }
 
 function watchUpdate(){
-	$('.forms-div').on('click', '.update-btn', function(event){
+	$('.forms-div').on('click', '.update-submit', function(event){
 		event.preventDefault();
 		let updateId = $('.update-id').val();
 		let newName = $('.new-meme-name').val();
