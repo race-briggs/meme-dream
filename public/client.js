@@ -52,7 +52,7 @@ function showSection(){
 
 		let foundMeme = {};
 
-		currentMemeName = String($('.event-name').html());
+		currentMemeName = String($('.entry-name').html());
 
 		console.log(currentMemeName);
 
@@ -191,7 +191,7 @@ function submitMeme(options){
 		$('.results-list').empty();
 		$('.results-list').append(
 			`<li class="result-li" data-id="${responseJson._id}">
-					<h3 name="name"><span class="event-name">${responseJson.name}</span></h3>
+					<h3 name="name"><span class="entry-name">${responseJson.name}</span></h3>
 					<p class="get-separator"><a href="${responseJson.example}" class="example-link"><img class="example-img" src="${responseJson.example}"></a></p>
 					<p class="get-separator">Origin: ${responseJson.origin}</p>
 					<p class="get-separator">Type: ${responseJson.type}</p>
