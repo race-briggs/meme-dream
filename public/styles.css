@@ -267,6 +267,10 @@ a {
 	padding: 5px;
 }
 
+.title-options {
+	margin-bottom: 0;
+}
+
 @media only screen and (max-width: 800px) {
 
 	.title, .reset-div {
