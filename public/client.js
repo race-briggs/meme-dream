@@ -4,6 +4,8 @@ const url = "https://sheltered-fortress-34693.herokuapp.com/memes";
 
 let currentMemeName;
 
+let updateMemeId;
+
 let callerFunction;
 
 
@@ -51,8 +53,6 @@ function showSection(){
 		let foundMeme = {};
 
 		currentMemeName = String($(this).closest('.result-li').find('.entry-name').html());
-
-		let updateMemeId;
 
 		if(!(currentMemeName)){
 			$('.results-list').html(`
@@ -211,7 +211,7 @@ function submitMeme(options){
 //updates a meme in the database
 function updateMeme(options){
 
-	let fullUrl = url + '/' + currentMemeId;
+	let fullUrl = url + '/' + updateMemeId;
 
 	fetch(fullUrl, {
 		method: 'PUT',
