@@ -52,7 +52,7 @@ function showSection(){
 
 		let foundMeme = {};
 
-		currentMemeName = String($('.entry-name').html());
+		currentMemeName = String($(this).closest('.result-li').find('.entry-name').html());
 
 		console.log(currentMemeName);
 
