@@ -48,13 +48,11 @@ function showSection(){
 	//});
 	$('.results-list').on('click', '.update-btn', function(){
 
-		console.log('click successful');
-
 		let foundMeme = {};
 
 		currentMemeName = String($(this).closest('.result-li').find('.entry-name').html());
 
-		console.log(currentMemeName);
+		let updateMemeId;
 
 		if(!(currentMemeName)){
 			$('.results-list').html(`
@@ -76,12 +74,12 @@ function showSection(){
 		}})
 		.then(response => response.json())
 		.then(responseJson => {
-			console.log(responseJson);
 			foundMeme._id = responseJson._id || "";
 			foundMeme.name = currentMemeName || "";
 			foundMeme.origin = responseJson.origin || "";
 			foundMeme.type = responseJson.type || "";
 			foundMeme.example = responseJson.example || "";
+			updateMemeId = foundMeme._id;
 			return foundMeme;
 		})
 		.then(meme => {
