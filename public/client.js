@@ -38,18 +38,6 @@ function showSection(){
 			</form>
 			`);
 	});
-	//$('.delete-nav').click(function(){
-	//	$('.reset-div').addClass('hidden');
-	//	$('.results').addClass('hidden');
-	//	$('.forms-div').removeClass('hidden').empty().append(`
-	//		<form class="delete-form" method="delete">
-	//			<p>DELETE A MEME</p>
-	//			<label class="meme-delete" for="meme-delete"> Delete a meme by ID:
-	//			<input class="delete-txt" type="text" name="meme-delete" placeholder="Enter a meme ID" required="true"></label>
-	//			<input role="button" class="delete-btn" type="submit" name="search-btn" value="Delete">
-	//		</form>
-	//		`);
-	//});
 	$('.results-list').on('click', '.update-btn', function(){
 
 		let foundMeme = {};
