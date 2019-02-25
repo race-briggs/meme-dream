@@ -6,6 +6,8 @@ let currentMemeName;
 
 let updateMemeId;
 
+let deleteMemeId;
+
 let callerFunction;
 
 
@@ -244,7 +246,7 @@ function displayMemes(data){
 					<p class="get-separator"><a href="${data[i].example}" class="example-link"><img class="example-img" src="${data[i].example}"></a></p>
 					<p class="get-separator">Origin: ${data[i].origin}</p>
 					<p class="get-separator">Type: ${data[i].type}</p>
-					<p class="get-separator" >ID: ${data[i]._id}</p>
+					<p class="get-separator" >ID: <span class="delete-id">${data[i]._id}</span></p>
 					<ul class="actions-ul">
 						<li class="actions"><button class="update-btn">Update</button></li>
 						<li class="actions"><button class="delete-btn">Delete</button></li>
@@ -269,7 +271,7 @@ function displayMemes(data){
 					<p class="get-separator"><a href="${data.example}" ="example-link"><img class="example-img" src="${data.example}"></a></p>
 					<p class="get-separator">Origin: ${data.origin}</p>
 					<p class="get-separator">Type: ${data.type}</p>
-					<p class="get-separator" >ID: ${data._id}</p>
+					<p class="get-separator" >ID: <span class="delete-id">${data._id}</span></p>
 					<ul class="actions-ul">
 						<li class="actions"><button class="update-btn">Update</button></li>
 						<li class="actions"><button class="delete-btn">Delete</button></li>
@@ -304,11 +306,14 @@ function watchSearch(){
 }
 
 function watchDelete(){
-	$('.actions-ul').on('click', '.delete-btn', function(event){
+	$('.results-list').on('click', '.delete-btn', function(event){
 		event.preventDefault();
-		let memeId = $('.delete-txt').val();
-		deleteMeme(memeId);
-		$('.delete-txt').val('');
+		deleteMemeId = String($(this).closest('.result-li').find('.delete-id').html());
+		if(confirm("Are you sure you want to delete this meme?")){
+			deleteMeme(deleteMemeId);
+		} else {
+			return false;
+		};
 	});
 }
 
